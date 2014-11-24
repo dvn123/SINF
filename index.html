@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+  <meta charset="UTF-8">
+  <title> AngularJS Example Store </title>
+  <link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="styles/app.css" type="text/css">
+</head>
+<body class="container">
+  <ul class="products list-unstyled" ng-controller="StoreController as store">
+    <li class="row" ng-repeat="product in store.products">
+      <h3> <product-title /> </h3>
+
+      <product-gallery></product-gallery>
+
+      <product-panels></product-panels>
+
+      <br class="clearfix" />
+    </li>
+  </ul> <!-- class="products" -->
+  <script type="text/javascript" src="scripts/angular.min.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
+</body>
+</html>
