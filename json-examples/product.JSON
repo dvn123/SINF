@@ -1,0 +1,28 @@
+{
+	"product" : {
+	"id" : "A0100",
+	"description" : "amazing backpack",
+	"price" : "39.99",
+	"category" : "backpack",
+	"subcategory" : "",
+	"brand":"tucano",
+	"subproducts" : [
+		{
+		"color":"blue",
+		"screen-size":"15.4",
+		"stock":"10"
+		},
+		{
+		"color":"red",
+		"screen-size":"15.4",
+		"stock":"5"
+		}
+		],
+	"image-links": [],
+	"specs-link": "null"
+},
+	"status" : {
+		"code" : "200",
+		"messsage" : ""
+	}
+}
