@@ -9,7 +9,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
     }])
 
     .controller('viewProductCtrl', ['$http', '$scope', '$routeParams' ,function($http, $scope, $routeParams) {
-        $http.get('1.json').success(function(data) {
+        $http.get('partials/viewProduct/1.json').success(function(data) {
             $scope.product = data;
         });
     }]);
