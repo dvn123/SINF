@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,21 +32,27 @@
     <link rel="stylesheet" href="assets/Theme/layerslider/css/layerslider.css" type="text/css">
     <script src="assets/Theme/js/modernizr.js"></script>
 </head>
-<body>
+
+<body ng-controller="globalController">
 
 <div class="topbar clearfix">
     <div class="container">
         <div class="col-lg-12 text-right">
             <div class="social_buttons">
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
+                        class="fa fa-facebook"></i></a>
                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i
+                        class="fa fa-google-plus"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i
+                        class="fa fa-dribbble"></i></a>
                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="RSS"><i class="fa fa-rss"></i></a>
             </div>
         </div>
-    </div><!-- end container -->
-</div><!-- end topbar -->
+    </div>
+    <!-- end container -->
+</div>
+<!-- end topbar -->
 
 <header class="header">
     <div class="container">
@@ -53,11 +63,62 @@
                         <h4>MAX<span>FRONT</span></h4>
                     </a>
                 </div>
-            </div><!-- title area -->
+            </div>
+
+            <!-- Login Modal -->
+                <script type="text/ng-template" id="loginModal.html">
+                    <div class="container">
+                        <br/>
+                        <div ng-show="errorMessage.length > 0" class="alert alert-danger">{{errorMessage}}</div>
+                        <form class="form-login" ng-submit="ok()">
+                            <h2 class="form-login-heading">sign in now</h2>
+                            <div class="login-wrap">
+                                <input type="text" class="form-control" placeholder="User ID" autofocus ng-model="user.username">
+                                <br>
+                                <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+                                <br>
+                                <button class="btn btn-theme btn-block" type="submit" id="modalSubmitButton"><i class="fa fa-lock"></i> SIGN IN</button>
+                                <hr>
+                                <div class="registration">
+                                    Don't have an account yet?<br/>
+                                    <a class="" href="#">
+                                        Create an account
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Forgot Password ?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Enter your e-mail address below to reset your password.</p>
+                                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                            <button class="btn btn-theme" type="button">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </script>
+
+            <p>{{user}}</p>
+
+
             <div class="col-lg-9 col-md-12 col-sm-12">
                 <div id="nav" class="right">
                     <div class="container clearfix">
                         <ul id="jetmenu" class="jetmenu blue">
+                            <li><a href="" ng-click="open(sm)">Login</a></li>
                             <li class="active"><a href="#">Home</a>
                                 <ul class="dropdown">
                                     <li><a href="index.html">Home - Shop Version</a></li>
@@ -109,17 +170,16 @@
                             </li>
                         </ul>
                     </div>
-                </div><!-- nav -->
-            </div><!-- title area -->
-        </div><!-- site header -->
-    </div><!-- end container -->
-</header><!-- end header -->
-
-
-
-
-
-
+                </div>
+                <!-- nav -->
+            </div>
+            <!-- title area -->
+        </div>
+        <!-- site header -->
+    </div>
+    <!-- end container -->
+</header>
+<!-- end header -->
 
 
 <ul class="menu">
@@ -131,39 +191,42 @@
 <div>Angular seed app: v<span app-version></span></div>
 
 <!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
-
 <div ng-view></div>
-
-
 
 
 <footer class="footer">
     <div class="container">
         <div class="widget col-lg-3 col-md-3 col-sm-12">
             <h4 class="title">About us</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
+
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry"s standard dummy text ever since the 1500s..</p>
             <a class="button small" href="#">read more</a>
-        </div><!-- end widget -->
+        </div>
+        <!-- end widget -->
         <div class="widget col-lg-3 col-md-3 col-sm-12">
             <h4 class="title">Recent Posts</h4>
             <ul class="recent_posts">
                 <li>
                     <a href="home1.html#">
-                        <img src="assets/Theme/demos/recent_post_01.png" alt="" />Our New Dashboard Is Here
+                        <img src="assets/Theme/demos/recent_post_01.png" alt=""/>Our New Dashboard Is Here
                     </a>
                     <a class="readmore" href="#">read more</a>
                 </li>
                 <li>
                     <a href="home1.html#">
-                        <img src="assets/Theme/demos/recent_post_02.png" alt="" />Design Is In The Air
+                        <img src="assets/Theme/demos/recent_post_02.png" alt=""/>Design Is In The Air
                     </a>
                     <a class="readmore" href="#">read more</a>
                 </li>
-            </ul><!-- recent posts -->
-        </div><!-- end widget -->
+            </ul>
+            <!-- recent posts -->
+        </div>
+        <!-- end widget -->
         <div class="widget col-lg-3 col-md-3 col-sm-12">
             <h4 class="title">Get In Touch</h4>
             <ul class="contact_details">
@@ -171,8 +234,10 @@
                 <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
                 <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
                 <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
-            </ul><!-- contact_details -->
-        </div><!-- end widget -->
+            </ul>
+            <!-- contact_details -->
+        </div>
+        <!-- end widget -->
         <div class="widget col-lg-3 col-md-3 col-sm-12">
             <h4 class="title">Flickr Stream</h4>
             <ul class="flickr">
@@ -185,14 +250,18 @@
                 <li><a href="#"><img alt="" src="assets/Theme/demos/flickr_07.jpg"></a></li>
                 <li><a href="#"><img alt="" src="assets/Theme/demos/flickr_08.jpg"></a></li>
             </ul>
-        </div><!-- end widget -->
-    </div><!-- end container -->
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- end container -->
 
     <div class="copyrights">
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-12 columns">
-                <p>Copyright © 2014 - All rights reserved. Designed by <a title="Bootstrap Themes" href="http://alvarez.is">Alvarez</a></p>
-            </div><!-- end widget -->
+                <p>Copyright © 2014 - All rights reserved. Designed by <a title="Bootstrap Themes"
+                                                                          href="http://alvarez.is">Alvarez</a></p>
+            </div>
+            <!-- end widget -->
             <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
                 <div class="footer-menu right">
                     <ul class="menu">
@@ -203,20 +272,14 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-            </div><!-- end large-6 -->
-        </div><!-- end container -->
-    </div><!-- end copyrights -->
-</footer><!-- end footer -->
-
-
-
-
-
-
-
-
-
-
+            </div>
+            <!-- end large-6 -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end copyrights -->
+</footer>
+<!-- end footer -->
 
 
 <!-- In production use:
@@ -224,6 +287,7 @@
 -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="app.js"></script>
 <script src="view1/view1.js"></script>
 <script src="view2/view2.js"></script>
@@ -245,17 +309,24 @@
 <script src="assets/Theme/js/jquery.prettyPhoto.js"></script>
 <script src="assets/Theme/js/jquery.isotope.min.js"></script>
 <script src="assets/Theme/js/custom.js"></script>
-
-
+<script>
+    $(document).ready(function () {
+        $("#popularitems").owlCarousel({
+            items: 3,
+            lazyLoad: true,
+            navigation: false
+        });
+    });
+</script>
 <script>
     // Portfolio
-    (function($) {
+    (function ($) {
         "use strict";
         var $container = $('.portfolio'),
                 $items = $container.find('.portfolio-item'),
                 portfolioLayout = 'fitRows';
 
-        if( $container.hasClass('portfolio-centered') ) {
+        if ($container.hasClass('portfolio-centered')) {
             portfolioLayout = 'masonry';
         }
 
@@ -268,18 +339,17 @@
                 easing: 'linear',
                 queue: false
             },
-            masonry: {
-            }
+            masonry: {}
         }, refreshWaypoints());
 
         function refreshWaypoints() {
-            setTimeout(function() {
+            setTimeout(function () {
             }, 1000);
         }
 
-        $('nav.portfolio-filter ul a').on('click', function() {
+        $('nav.portfolio-filter ul a').on('click', function () {
             var selector = $(this).attr('data-filter');
-            $container.isotope({ filter: selector }, refreshWaypoints());
+            $container.isotope({filter: selector}, refreshWaypoints());
             $('nav.portfolio-filter ul a').removeClass('active');
             $(this).addClass('active');
             return false;
@@ -308,9 +378,9 @@
                     columnNumber = getColumnNumber(),
                     itemWidth = Math.floor(winWidth / columnNumber);
 
-            $container.find('.portfolio-item').each(function() {
-                $(this).css( {
-                    width : itemWidth + 'px'
+            $container.find('.portfolio-item').each(function () {
+                $(this).css({
+                    width: itemWidth + 'px'
                 });
             });
         }
@@ -329,6 +399,5 @@
         });
     })(jQuery);
 </script>
-
+</body>
 </html>
-
