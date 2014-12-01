@@ -14,6 +14,15 @@ angular.module('myApp', [
         $routeProvider
             .otherwise({redirectTo: '/view1'});
     }])
+    .directive('wrapOwlcarousel', function () {
+        return {
+            restrict: 'E',
+            link: function (scope, element, attrs) {
+                var options = scope.$eval($(element).attr('data-options'));
+                $(element).owlCarousel(options);
+            }
+        };
+    })
     .controller('globalController', function ($scope, $modal, $log, Auth) {
         $scope.open = function (size) {
             var modalInstance = $modal.open({
