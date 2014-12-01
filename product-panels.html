@@ -1,0 +1,21 @@
+<aside class="panels">
+  <ul class="nav nav-pills">
+    <li><a href ng-click="panels.setCurrent(1)">Description</a></li>
+    <li><a href ng-click="panels.setCurrent(2)">Specifications</a></li>
+    <li><a href ng-click="panels.setCurrent(3)">Reviews</a></li>
+  </ul>
+  <div class="panel" ng-show="panels.isCurrent(1)">
+    <h4> Description </h4>
+  </div>
+  <div class="panel" ng-show="panels.isCurrent(2)">
+    <h4> Specifications </h4>
+  </div>
+  <div class="panel" ng-show="panels.isCurrent(3)">
+    <h4> Reviews </h4>
+
+    <product-review ng-repeat="review in product.reviews"
+        review="review"></product-review>
+
+    <product-review-form></product-review-form>
+  </div>
+</aside>
