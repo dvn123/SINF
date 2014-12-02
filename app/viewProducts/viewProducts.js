@@ -9,9 +9,39 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         });
     }])
 
-    .controller('viewProductsCtrl', ['$sce', '$scope', function($sce, $scope) {
-        var div = '<div class="portfolio-item web-design"><div class="he-wrap tpl6"><img src="assets/Theme/demos/portfolio_09.jpg" alt=""><div class="he-view"><div class="bg a0" data-animate="fadeIn"><h3 class="a1" data-animate="fadeInDown">A Web Design Item</h3><a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_09.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a><a href="single-portfolio-2.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a></div><!-- he bg --></div><!-- he view --></div><!-- he wrap --></div><!-- end col-12 -->';
-        $scope.ddata = {someString: div, trustedVersion:""}
+    .controller('viewProductsCtrl', ['$sce', '$scope', '$http', function($sce, $scope, $http) {
+        var part1 = '<div class="portfolio-item ';
+        var classe = 'web-design';
+        var part2 = '"><div class="he-wrap tpl6"><img src="';
+        var img = 'assets/Theme/demos/portfolio_09.jpg';
+        var part3 = '" alt=""><div class="he-view"><div class="bg a0" data-animate="fadeIn"><h3 class="a1" data-animate="fadeInDown">';
+        var name = 'A Web Design Item';
+        var part4 = '</h3><a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_09.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a><a href="';
+        //img
+        var part5 = '" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a></div><!-- he bg --></div><!-- he view --></div><!-- he wrap --></div><!-- end col-12 -->';
+        //var div = '<div class="portfolio-item web-design"><div class="he-wrap tpl6"><img src="assets/Theme/demos/portfolio_09.jpg" alt=""><div class="he-view"><div class="bg a0" data-animate="fadeIn"><h3 class="a1" data-animate="fadeInDown">A Web Design Item</h3><a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_09.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a><a href="single-portfolio-2.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a></div><!-- he bg --></div><!-- he view --></div><!-- he wrap --></div><!-- end col-12 -->';
+        $scope.ddata = {someString: "", trustedVersion:""};
+        //var div = "";
+
+
+        $http.get('viewProducts/list.JSON').success(function(data) {
+           /*$scope.products = data;
+            console.log($scope.products);*/
+
+            var html = "";
+            var div = part1 + classe + part2 + img + part3 + name + part4 + img + part5;
+
+            console.log(data);
+
+            var products = data.products;
+            for (var i = 0; i < products.length; i++) {
+                console.log(i + "-" + products[i].name);
+                var div = part1 + classe + part2 + img + part3 + products[i].name + part4 + img + part5;
+                html = html +  div;
+            }
+            $scope.ddata = {someString: html, trustedVersion:""};
+        });
+
 
         $scope.$watch("ddata.someString", function(newVal){
             debugger;
