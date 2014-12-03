@@ -25,7 +25,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
         $scope.products = {}
 
-
+/*
         $scope.$watch("products", function(newVal){
             debugger;
             $scope.ddata.trustedVersion = $sce.trustAsHtml(newVal);
@@ -107,10 +107,10 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                 setPortfolio();
             });
         },true);
-
+*/
         $http.get('viewProducts/list.JSON').success(function(data) {
-           /*$scope.products = data;
-            console.log($scope.products);*/
+            /*$scope.products = data;
+             console.log($scope.products);*/
 
             var html = "";
             var div = part1 + classe + part2 + img + part3 + name + part4 + img + part5;
@@ -121,17 +121,12 @@ angular.module('myApp.viewProducts', ['ngRoute'])
             for (var i = 0; i < products.length; i++) {
                 console.log(i + "-" + products[i].name);
                 var div = part1 + classe + part2 + img + part3 + products[i].name + part4 + img + part5;
-                html = html +  div;
+                html = html + div;
             }
 
             $scope.products = products;
 
-            $scope.ddata = {someString: html, trustedVersion:""};
-
-            $scope.$watch("products", function(newVal){
-                debugger;
-                $scope.ddata.trustedVersion = $sce.trustAsHtml(newVal);
-
+            $scope.ddata = {someString: html, trustedVersion: ""}
 
                 var $container = $('.portfolio'),
                     $items = $container.find('.portfolio-item'),
@@ -141,7 +136,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                     portfolioLayout = 'masonry';
                 }
 
-                $container.isotope({
+                $container.isotope(/*{
                     filter: '*',
                     animationEngine: 'best-available',
                     layoutMode: portfolioLayout,
@@ -151,7 +146,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                         queue: false
                     },
                     masonry: {}
-                }, refreshWaypoints());
+                }, refreshWaypoints()*/);
 
                 function refreshWaypoints() {
                     setTimeout(function () {
@@ -185,13 +180,15 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                 }
 
                 function setColumns() {
+                    console.log("I'm here!");
                     var winWidth = $(window).width(),
                         columnNumber = getColumnNumber(),
                         itemWidth = Math.floor(winWidth / columnNumber);
 
                     $container.find('.portfolio-item').each(function () {
                         $(this).css({
-                            width: itemWidth + 'px'
+                            width: itemWidth + 'px',
+                            display: "inline"
                         });
                     });
                 }
@@ -208,8 +205,8 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                 $(window).on('resize', function () {
                     setPortfolio();
                 });
-            },true);
-        });
+        }
+        );
 
 
 
