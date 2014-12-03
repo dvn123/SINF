@@ -1,5 +1,5 @@
 {
-	"products" : [
+	"products" : [{
 
 
 	"id" : "A0100",
@@ -10,8 +10,6 @@
 	"brand":"tucano",
 	"material":"leather",
 	"description":"this amazing backpack will help you carry your laptop",
-	"colors":["blue","red"],
-	"screen-sizes":["15.4","13.3"],
 	"subproducts" : [
 		{
 		"color":"blue",
@@ -28,7 +26,7 @@
 	"specs-link": "null"
 }
 
-,
+,{
 
 	"id" : "A0101",
 	"name" : "belkin sleeve",
@@ -38,8 +36,6 @@
 	"brand":"belkin",
 	"material":"leather",
 	"description":"this amazing sleeve will help you keep your laptop safe",
-	"colors":["blue","red"],
-	"screen-sizes":["15.4","13.3"],
 	"subproducts" : [
 		{
 		"color":"dark gray",
