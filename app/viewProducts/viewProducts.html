@@ -5,33 +5,35 @@
 
         <nav class="portfolio-filter clearfix">
             <ul>
-                <li><a href="#" class="dmbutton2" data-filter="*">All Works (10)</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".books">Books</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".graphic-design">Graphics</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".web-design">Web Projects</a></li>
+                <li><a href="#" class="dmbutton2" data-filter="*">Canvas</a></li>
+                <li><a href="#" class="dmbutton2" data-filter=".books">Leather</a></li>
+                <li><a href="#" class="dmbutton2" data-filter=".graphic-design">Fabric</a></li>
+                <li><a href="#" class="dmbutton2" data-filter=".web-design">Nylon</a></li>
+                <li><a href="#" class="dmbutton2" data-filter=".web-design">Faux fur</a></li>
+                <li><a href="#" class="dmbutton2" data-filter=".web-design">Hard plastic</a></li>
+                <li><a href="#" class="dmbutton2" data-filter=".web-design">Neoprene</a></li>
             </ul>
         </nav>
 
+
+
         <div class="portfolio-centered">
-            <div class="recentitems portfolio" isotope-container="isotope-container">
+            <div class="recentitems portfolio container" ng-controller="viewProductsCtrl as view">
 
-
-
-
-                    <div class="portfolio-item books" ng-repeat="x in products" isotope-item="">
+                    <div class="portfolio-item books col-md-3" style="margin-top: 20px" ng-repeat="product in view.products" isotope-item="">
                         <div class="he-wrap tpl6">
                             <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">{{x.name}}</h3>
+                                    <h3 class="a1" data-animate="fadeInDown">{{product.name}}</h3>
                                     <a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_01.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
-                                    <a href="single-portfolio-2.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                                    <a ng-href="#products/{{product.id}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
                                 </div><!-- he bg -->
                             </div><!-- he view -->
                         </div><!-- he wrap -->
                     </div>
 
-                    <div class="portfolio-item graphic-design" id="extra" isotope-item="" class="kindling green">
+                    <div class="portfolio-item graphic-design col-md-3" style="margin-top: 20px" id="extra" isotope-item="" class="kindling green">
                         <div class="he-wrap tpl6">
                             <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
                             <div class="he-view">
@@ -53,7 +55,7 @@
         <div class="divider"></div>
 
         <script>
-            var $container = $('.portfolio'),
+            /*var $container = $('.portfolio'),
                     $items = $container.find('.portfolio-item'),
                     portfolioLayout = 'fitRows';
 
@@ -127,7 +129,7 @@
 
             $(window).on('resize', function () {
                 setPortfolio();
-            });
+            });*/
         </script>
 
     </div><!-- end clearix -->
