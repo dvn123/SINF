@@ -28,6 +28,7 @@
     <!-- Template Styles -->
     <link rel="stylesheet" href="assets/Theme/css/style.css">
     <link rel="stylesheet" href="assets/Theme/css/colors/brown.css">
+    <link rel="stylesheet" href="assets/js/advanced-datatable/media/css/jquery.dataTables.css">
     <!-- Layer Slider -->
     <link rel="stylesheet" href="assets/Theme/layerslider/css/layerslider.css" type="text/css">
     <script src="assets/Theme/js/modernizr.js"></script>
@@ -211,6 +212,7 @@
     <li><a href="#/view2">view2</a></li>
     <li><a href="#/viewProducts">viewProducts</a></li>
     <li><a href="#/products/1">viewProduct</a></li>
+    <li><a href="#/history">History</a></li>
 </ul>
 <div>Angular seed app: v<span app-version></span></div>
 
@@ -220,7 +222,6 @@
 <![endif]-->
 
 <div ng-view></div>
-
 
 <footer class="footer">
     <div class="container">
@@ -303,21 +304,25 @@
     </div>
     <!-- end copyrights -->
 </footer>
+
+
 <!-- end footer -->
 
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
+<script src="assets/Theme/assets/js/jquery.js"></script>
+<script src="assets/Theme/assets/js/bootstrap.min.js"></script>
+<script src="assets/Theme/assets/js/jquery.unveilEffects.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <!-- break -->
 
 <!-- Theme scripts-->
-<script src="assets/Theme/assets/js/jquery.js"></script>
-<script src="assets/Theme/assets/js/bootstrap.min.js"></script>
-<script src="assets/Theme/assets/js/jquery.unveilEffects.js"></script>
+<script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
 <script src="assets/Theme/js/retina-1.1.0.js"></script>
 <script src="assets/Theme/js/jquery.hoverdir.js"></script>
 <script src="assets/Theme/js/owl.carousel.js"></script>
