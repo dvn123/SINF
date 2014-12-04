@@ -1,0 +1,6 @@
+http://localhost:49822/api/products/A001/
+ 
+{"product":{"id":"A001","name":"Cocoon Slim Backpack","category":"BACKPACK","brand":"COCOON","price":79.95,"material":"Fabric","description":"Only 3.5-inches deep when fully packed, Cocoon's SLIM backpack cradles your MacBook Pro, iPad, and documents in luxurious interior pockets. Thanks to water-resistant ballistic nylon construction and waterproof zippers, SLIM keeps everything inside safe and dry. Its adjustable shoulder straps, minimalist design, and gunmetal hardware also provide loads of comfort and style. And the unique full-size GRID-IT! pocket lets you securely store items vertically, so you can say farewell to a messy bag.","subproducts":[{"color":"BLACK","size":"15","stock":10}],"image_links":["{A8A8FC5A-76F6-11E4-8591-080027980C81}","{DDE20922-76F6-11E4-8591-080027980C81}","{D5F64752-76F6-11E4-8591-080027980C81}"],"specs_link":null}}
+ 
+ 
+Get images url: http://localhost:49822/api/images/--image_name--
