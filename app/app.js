@@ -8,10 +8,14 @@ angular.module('myApp', [
     'myApp.viewProducts',
     'myApp.viewProduct',
     'myApp.version',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'datatables'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
+            .when('/history', {
+                templateUrl: 'partials/history/history.html'
+            })
             .otherwise({redirectTo: '/view1'});
     }])
     .directive('wrapOwlcarousel', function () {
@@ -39,21 +43,64 @@ angular.module('myApp', [
         };
 
         $scope.user = Auth.isLoggedIn();
+
+        $scope.hasUser = function () {
+            return typeof $scope.user.email !== 'undefined';
+        };
+
+        $scope.logout = function () {
+            Auth.logout(function (data) {
+                    $log.info("Logout success: " + data);
+                    $scope.user = {};
+                },
+                function (error) {
+                    $log.error("Logout error: " + error);
+                    $scope.errorMessage = error.message;
+                });
+        }
     })
     .controller('loginModalController', function ($scope, $modalInstance, $http, $log, Auth) {
         $scope.errorMessage = "";
         $scope.activeForm = "login";
+        $scope.newuser = {};
+
+        $scope.switchToRegister = function () {
+            $scope.activeForm = "register";
+            $scope.errorMessage = "";
+        };
+
+        $scope.switchToLogin = function () {
+            $scope.activeForm = "login";
+            $scope.errorMessage = "";
+        };
+
+        $scope.differentPasswords = function () {
+            return $scope.newuser.password !== $scope.newuser.password2;
+        };
+
+        $scope.invalidForm = function () {
+            return $scope.differentPasswords();
+        };
 
         $scope.ok = function () {
             $("#modalSubmitButton").blur();
 
-            Auth.login($scope.user,
-                function (data) {
-                    $modalInstance.close(data);
-                },
-                function (error) {
-                    $scope.errorMessage = error.message;
-                });
+            if ($scope.activeForm === "login")
+                Auth.login($scope.newuser,
+                    function (data) {
+                        $modalInstance.close(data);
+                    },
+                    function (error) {
+                        $scope.errorMessage = error.message;
+                    });
+            else
+                Auth.register($scope.newuser,
+                    function (data) {
+                        $modalInstance.close(data);
+                    },
+                    function (error) {
+                        $scope.errorMessage = error.message;
+                    });
         };
 
         $scope.cancel = function () {
@@ -68,12 +115,32 @@ angular.module('myApp', [
                 return user;
             },
             register: function (user, success, error) {
-                $http.post('/register', user).success(function (res) {
-                    user = res;
-                    success();
+                /*
+                 $http.post('/register', user).success(function (res) {
+                 user = res;
+                 success();
+                 }).error(error);
+                 */
+                $http.get('login.json', user).success(function (res) {
+                    if (res.error)
+                        error(res.error);
+                    else {
+                        user = res;
+                        success(user);
+                    }
                 }).error(error);
             },
             login: function (user, success, error) {
+                /*
+                 $http.post('login.json', user).success(function (res) {
+                 if (res.error)
+                 error(res.error);
+                 else {
+                 user = res;
+                 success(user);
+                 }
+                 }).error(error);
+                 */
                 $http.get('login.json', user).success(function (res) {
                     if (res.error)
                         error(res.error);
@@ -84,10 +151,14 @@ angular.module('myApp', [
                 }).error(error);
             },
             logout: function (success, error) {
-                $http.post('/logout').success(function () {
-                    user = {};
-                    success();
-                }).error(error);
+                user = {};
+                success();
+                /*
+                 $http.post('/logout').success(function () {
+                 user = {};
+                 success();
+                 }).error(error);
+                 */
             }
         };
     });
