@@ -5,22 +5,23 @@
 
         <nav class="portfolio-filter clearfix">
             <ul>
-                <li><a href="#" class="dmbutton2" data-filter="*">Canvas</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".books">Leather</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".graphic-design">Fabric</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".web-design">Nylon</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".web-design">Faux fur</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".web-design">Hard plastic</a></li>
-                <li><a href="#" class="dmbutton2" data-filter=".web-design">Neoprene</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".portfolio-item")'>All</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".canvas")'>Canvas</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".fabric")'>Fabric</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".faux-fur")'>Faux fur</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".hard-plastic")'>Hard plastic</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".leather")'>Leather</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".neoprene")'>Neoprene</a></li>
+                <li><a href="" class="dmbutton2" onclick='showCategory(".nylon")'>Nylon</a></li>
             </ul>
         </nav>
 
 
 
-        <div class="portfolio-centered">
+        <div class="portfolio-centered" style="margin-left: 80px;">
             <div class="recentitems portfolio container" ng-controller="viewProductsCtrl as view">
 
-                    <div class="portfolio-item books col-md-3" style="margin-top: 20px" ng-repeat="product in view.products" isotope-item="">
+                    <div class="portfolio-item books col-md-3 {{product.material}}" style="margin-top: 20px" ng-repeat="product in view.products" isotope-item="">
                         <div class="he-wrap tpl6">
                             <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
                             <div class="he-view">
@@ -55,6 +56,11 @@
         <div class="divider"></div>
 
         <script>
+
+            function showCategory(category) {
+                $('.portfolio-item').hide();
+                $(category).slideToggle();
+            }
             /*var $container = $('.portfolio'),
                     $items = $container.find('.portfolio-item'),
                     portfolioLayout = 'fitRows';

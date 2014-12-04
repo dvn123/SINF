@@ -6,9 +6,9 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         $routeProvider.when('/viewProducts', {
             templateUrl: 'viewProducts/viewProducts.html',
             controller: 'viewProductsCtrl'
-        }).when('/viewProducts/:productID', {
+        }).when('/viewProducts/:category', {
             templateUrl: 'viewProducts/viewProducts.html',
-            controller: 'viewBackpackCtrl'
+            controller: 'viewCategoryCtrl'
         });
     }])
 
@@ -27,10 +27,11 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
     }])
 
-    .controller('viewBackpackCtrl', ['$http', function($http) {
+    .controller('viewCategoryCtrl', ['$http', '$route', function($http, $route) {
         var view = this;
         view.products = [ ];
 
+        console.log($route.current.params);
         $http.get('viewProducts/list.JSON').success(function(data) {
                 console.log("benfica");
                 view.products = data.products;
@@ -41,3 +42,8 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
 
     }]);
+
+function showCategory(category) {
+    $('.portfolio-item').hide();
+    $(category).slideToggle();
+}
