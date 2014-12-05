@@ -17,62 +17,91 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
             $scope.select_options = {};
 
+            $scope.keys = Object.keys(data.product.subproducts[0]);
+            for(var i = 0; i < $scope.keys.length; i++) {
+                //Set defaults
+                $scope.current[$scope.keys[i]] = data.product.subproducts[0][$scope.keys[i]];
 
-
-            var keys = Object.keys(data.product.subproducts[0]);
-            for(var i = 0; i < keys.length; i++) {
-                if(keys[i] != "stock") {
-                    $scope.select_options[keys[i]] = [];
+                if($scope.keys[i] != "stock") {
+                    $scope.select_options[$scope.keys[i]] = [];
                 }
             }
 
-            $scope.master_select = keys[0];
+            $scope.master_select = $scope.keys[0];
 
             for(var i = 0; i < data.product.subproducts.length; i++) {
                 for(var key in data.product.subproducts[i]){
-                    if(key != "stock") {
+                    if(key != "stock" && $scope.select_options[key].indexOf(data.product.subproducts[i][key]) == -1) {
                         $scope.select_options[key].push(data.product.subproducts[i][key]);
                     }
                 }
             }
+            console.log($scope.select_options);
+
             $scope.select_options_full = $scope.select_options;
+            $scope.filter = {};
         });
+
+
         $scope.updateSelected = function(obj) {
-            console.log(obj + "ASD" + $scope.current["color"]);
-
-            if(obj !=  $scope.master_select)
+            console.log("Key: " + obj);
+            if(obj !=  $scope.master_select) {
+                $scope.updateStock(obj);
                 return;
+            }
 
-            var selected_object;
+            var selected_object = null;
 
-            var filter = {};
 
-            var keys = Object.keys($scope.product.subproducts[0]);
-            for(var i = 0; i < keys.length; i++) {
-                if(keys[i] != $scope.master_select) {
-                    filter[keys[i]] = [];
+            for(var i = 0; i < $scope.keys.length; i++) {
+                if($scope.keys[i] != $scope.master_select) {
+                    $scope.filter[$scope.keys[i]] = [];
                 }
             }
 
+            console.log(JSON.stringify($scope.filter));
+
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
-                for(var key2 in $scope.product.subproducts[i]) {
-                    if ($scope.current[key2] == $scope.product.subproducts[i][key2]) {
-                        selected_object = $scope.product.subproducts[i][key2];
-                        for (var key in selected_object) {
-                            filter[key].push(selected_object[key]);
-                        }
+                if ($scope.current[obj] == $scope.product.subproducts[i][obj]) {
+                    selected_object = $scope.product.subproducts[i];
+                    console.log(selected_object);
+                    for (var key in selected_object) {
+                        //console.log(key);
+                        if(key != $scope.master_select)
+                            $scope.filter[key].push(selected_object[key]);
                     }
                 }
             }
 
-            console.log(JSON.stringify(filter));
+            console.log(JSON.stringify($scope.filter));
 
             for(key in $scope.select_options) {
                 if(key != obj) {
-                    $scope.select_options[key] = filter[key];
+                    $scope.select_options[key] = $scope.filter[key];
+                    $scope.current[key] = $scope.filter[key][0];
                 }
             }
-            // use $scope.selectedItem.code and $scope.selectedItem.name here
-            // for other stuff ...
+            $scope.current["stock"] =  $scope.filter["stock"][0]
         };
+
+
+
+        $scope.updateStock = function(obj) {
+            for(var i = 0; i < $scope.product.subproducts.length; i++) {
+                var tmp = jQuery.extend(true, {}, $scope.product.subproducts[i]);
+                delete tmp['stock'];
+
+                var tmp2 = jQuery.extend(true, {}, $scope.current);
+                delete tmp2['stock'];
+                console.log();
+                console.log(tmp);
+                console.log($scope.product.subproducts[i]["stock"]);
+                console.log(tmp2);
+                console.log(tmp == tmp2);
+                if(angular.equals(tmp, tmp2)) {
+                    console.log("FOUND - Stock = " + $scope.product.subproducts[i]["stock"]);
+                    $scope.current["stock"] = $scope.product.subproducts[i]["stock"];
+                }
+            }
+        }
     }]);
