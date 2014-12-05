@@ -17,7 +17,6 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         view.products = [ ];
 
         $http.get('viewProducts/list.JSON').success(function(data) {
-                console.log(data);
                 view.products = data.products;
             }
         );
@@ -28,14 +27,6 @@ angular.module('myApp.viewProducts', ['ngRoute'])
     }])
     .filter('productsFilter', function() {
         return function (items, params) {
-            /*var newItems = [];
-             var material = params.material;
-             for (var i = 0; i < items.length; i++) {
-             if (material == '*')
-             newItems.push(items[i]);
-             else if (items[i].material == material)
-             newItems.push(items[i]);
-             };*/
             var material = filter("material", params.material, items);
             return filter("colors", params.color, material);
         }
@@ -49,29 +40,17 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
         console.log($route.current.params);
         $http.get('viewProducts/list.JSON').success(function(data) {
-                console.log("benfica");
                 view.products = data.products;
             }
         );
 
-        /*view.filter = function(products) {
-         var newProducts = [ ];
-
-         for(var i = 0; i < products.length; i++) {
-         if (view.material == '*')
-         newProducts.push(products[i]);
-         else if (product.material == view.material)
-         newProducts.push(products[i]);
-         }
-         return newProducts;
-         }*/
-
         view.setMaterial = function(material) {
             view.material = material;
-        }
+        };
+
         view.setColor = function(color) {
             view.color = color;
-        }
+        };
 
 
 
