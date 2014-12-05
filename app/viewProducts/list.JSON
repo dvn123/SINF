@@ -74,7 +74,7 @@
             "material": "leather",
             "description": "this amazing backpack will help you carry your laptop",
             "colors": [
-                "blue",
+                "pink",
                 "red"
             ],
             "screen-sizes": [
@@ -106,8 +106,8 @@
             "material": "canvas",
             "description": "this amazing backpack will help you carry your laptop",
             "colors": [
-                "blue",
-                "red"
+                "black",
+                "white"
             ],
             "screen-sizes": [
                 "15.4",

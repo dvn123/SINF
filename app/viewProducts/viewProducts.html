@@ -18,14 +18,15 @@
 
         <nav class="portfolio-filter" style="margin-top: -25px">
             <ul>
-                <li><a href="" class="dmbutton2" style="background-color: red" onclick='showCategory(".portfolio-item")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: blue" onclick='showCategory(".canvas")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: green" onclick='showCategory(".fabric")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: saddlebrown" onclick='showCategory(".faux-fur")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: #000000" onclick='showCategory(".hard-plastic")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: #ffff00" onclick='showCategory(".leather")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: pink" onclick='showCategory(".neoprene")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: white" onclick='showCategory(".nylon")'></a></li>
+                <!--TODO: change to circles -->
+                <li><a href="" class="dmbutton2" style="background-color: red" ng-click='view.setColor("red")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: blue" ng-click='view.setColor("blue")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: green" ng-click='view.setColor("green")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: saddlebrown" ng-click='view.setColor("brown")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: #000000" ng-click='view.setColor("black")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: #ffff00" ng-click='view.setColor("yellow")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: pink" ng-click='view.setColor("pink")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: white" ng-click='view.setColor("white")'></a></li>
             </ul>
         </nav>
 
@@ -34,7 +35,7 @@
         <div class="portfolio-centered" style="margin-left: 80px;">
             <div class="recentitems portfolio container">
 
-                <div class="portfolio-item books col-md-3 {{product.material}}" style="margin-top: 20px" ng-repeat="product in view.products | productsFilter : {material: view.material}" isotope-item="">
+                <div class="portfolio-item books col-md-3 {{product.material}}" style="margin-top: 20px" ng-repeat="product in view.products | productsFilter : {material: view.material, color: view.color}" isotope-item="">
                     <div class="he-wrap tpl6">
                         <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
                         <div class="he-view">
