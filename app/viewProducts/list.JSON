@@ -4,7 +4,7 @@
             "id": "A0100",
             "name": "tucano backpack",
             "price": "39.99",
-            "category": "backpack",
+            "material": "backpack",
             "subcategory": "",
             "brand": "tucano",
             "material": "leather",
@@ -36,7 +36,7 @@
             "id": "A0101",
             "name": "belkin sleeve",
             "price": "19.99",
-            "category": "sleeve",
+            "material": "sleeve",
             "subcategory": "",
             "brand": "belkin",
             "material": "leather",
@@ -68,13 +68,13 @@
             "id": "A0100",
             "name": "glorioso",
             "price": "39.99",
-            "category": "backpack",
+            "material": "backpack",
             "subcategory": "",
             "brand": "tucano",
             "material": "leather",
             "description": "this amazing backpack will help you carry your laptop",
             "colors": [
-                "blue",
+                "pink",
                 "red"
             ],
             "screen-sizes": [
@@ -100,14 +100,14 @@
             "id": "A0100",
             "name": "eastpack",
             "price": "39.99",
-            "category": "backpack",
+            "material": "backpack",
             "subcategory": "",
             "brand": "tucano",
             "material": "canvas",
             "description": "this amazing backpack will help you carry your laptop",
             "colors": [
-                "blue",
-                "red"
+                "black",
+                "white"
             ],
             "screen-sizes": [
                 "15.4",
