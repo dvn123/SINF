@@ -26,9 +26,12 @@
                         <div class="theme_details">
                             <div class="details_section">
                                 <h3>Item Details</h3>
-                                    <span ng-repeat="(key, array) in select_options">{{key}}:
-                                        <select ng-model="current" ng-change="updateSelected(this)" ng-options="items.indexOf(val) as val for val in array"></select>
+                                     <span ng-repeat="(key, array) in select_options">{{key}}:
+                                        <select ng-model="current[key]" ng-change="updateSelected(key)">
+                                            <option  ng-repeat="val in array">{{val}}</option>
+                                        </select>
                                     <br></span>
+
                             </div>
                         </div>
                     </div><!-- col-lg-3 -->
@@ -57,9 +60,6 @@
                 </div><!-- item_details -->
                         
                	<div class="clearfix"></div>
-                
-
-
   			</div><!-- end content -->
             <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
                 <div class="general-title text-center">
