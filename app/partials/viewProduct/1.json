@@ -1,9 +1,15 @@
 {
-  "name": "Pedro Abrunhosa",
-  "header1": "Se eu fosse um dia o teu olhar",
-  "header2" : "E tu as minhas mãos também",
-  "description": "Frio, o mar  Por entre o corpo  Fraco de lutar.  Quente,  O chão  Onde te estendo  E te levo a razão.  Longa a noite  E só o sol  Quebra o silêncio,  Madrugada de cristal.  Leve, lento, nú, fiel E este vento  Que te navega na pele.  Pede-me a paz  Dou-te o mundo  Louco, livre assim sou eu  (Um pouco +...)  Solta-te a voz lá do fundo,  Grita, mostra-me a cor do céu.  Se eu fosse um dia o teu olhar,  E tu as minhas mãos também,  Se eu fosse um dia o respirar  E tu perfume de ninguém.  Se eu fosse um dia o teu olhar,  E tu as minhas mãos também,  Se eu fosse um dia o respirar  E tu perfume de ninguém.  Sangue,  Ardente,  Fermenta e torna aos  Dedos de papel.  Luz,  Dormente,  Suavemente pinta o teu rosto a  pincel.  Largo a espera,  E sigo o sul,  Perco a quimera  Meu anjo azul.  Fica, forte, sê amada,  Quero que saibas  Que ainda não te disse nada.  Pede-me a paz  Dou-te o mundo  Louco, livre assim sou eu  (Um pouco +...)  Solta-te a voz lá do fundo,  Grita, mostra-me a cor do céu.  Se eu fosse um dia o teu olhar,  E tu as minhas mãos também,  Se eu fosse um dia o respirar  E tu perfume de ninguém.  Se eu fosse um dia o teu olhar,  E tu as minhas mãos também,  Se eu fosse um dia o respirar  E tu perfume de ninguém.",
-  "details": { "Size": 1.80, "Age": "49"} ,
-  "price": 300,
-  "imageURL": "http://discodigital.sapo.pt/images_content/2013/201311151741_Pedroabrunhosa.jpeg"
+  "product":
+  {"id":"A001",
+   "name":"Cocoon Slim Backpack",
+   "category":"BACKPACK",
+   "brand":"COCOON",
+   "price":79.95,
+   "material":"Fabric",
+   "description":"Only 3.5-inches deep when fully packed, Cocoon's SLIM backpack cradles your MacBook Pro, iPad, and documents in luxurious interior pockets. Thanks to water-resistant ballistic nylon construction and waterproof zippers, SLIM keeps everything inside safe and dry. Its adjustable shoulder straps, minimalist design, and gunmetal hardware also provide loads of comfort and style. And the unique full-size GRID-IT! pocket lets you securely store items vertically, so you can say farewell to a messy bag.",
+   "subproducts":[{"color":"BLACK","size":"15","stock":10},{"color":"BLACK2","size":"152","stock":10}],
+   "image_links":["{A8A8FC5A-76F6-11E4-8591-080027980C81}",
+                  "{DDE20922-76F6-11E4-8591-080027980C81}",
+                  "{D5F64752-76F6-11E4-8591-080027980C81}"],
+   "specs_link":null}
 }
