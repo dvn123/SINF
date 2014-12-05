@@ -1,54 +1,68 @@
-<section class="section1">
+<section class="section1" ng-controller="viewCategoryCtrl as view">
     <div class="clearfix">
 
         <div class="divider"></div>
 
-        <nav class="portfolio-filter clearfix">
+        <nav class="portfolio-filter clearfix" >
             <ul>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".portfolio-item")'>All</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".canvas")'>Canvas</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".fabric")'>Fabric</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".faux-fur")'>Faux fur</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".hard-plastic")'>Hard plastic</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".leather")'>Leather</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".neoprene")'>Neoprene</a></li>
-                <li><a href="" class="dmbutton2" onclick='showCategory(".nylon")'>Nylon</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("*")'>All</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("canvas")'>Canvas</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("fabric")'>Fabric</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("faux fur")'>Faux fur</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("hard plastic")'>Hard plastic</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("leather")'>Leather</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("neoprene")'>Neoprene</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("nylon")'>Nylon</a></li>
+            </ul>
+        </nav>
+
+        <nav class="portfolio-filter" style="margin-top: -25px">
+            <ul>
+                <li><a href="" class="dmbutton2" style="background-color: red" onclick='showCategory(".portfolio-item")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: blue" onclick='showCategory(".canvas")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: green" onclick='showCategory(".fabric")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: saddlebrown" onclick='showCategory(".faux-fur")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: #000000" onclick='showCategory(".hard-plastic")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: #ffff00" onclick='showCategory(".leather")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: pink" onclick='showCategory(".neoprene")'></a></li>
+                <li><a href="" class="dmbutton2" style="background-color: white" onclick='showCategory(".nylon")'></a></li>
             </ul>
         </nav>
 
 
 
         <div class="portfolio-centered" style="margin-left: 80px;">
-            <div class="recentitems portfolio container" ng-controller="viewProductsCtrl as view">
+            <div class="recentitems portfolio container">
 
-                    <div class="portfolio-item books col-md-3 {{product.material}}" style="margin-top: 20px" ng-repeat="product in view.products" isotope-item="">
-                        <div class="he-wrap tpl6">
-                            <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">{{product.name}}</h3>
-                                    <a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_01.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
-                                    <a ng-href="#products/{{product.id}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div>
+                <div class="portfolio-item books col-md-3 {{product.material}}" style="margin-top: 20px" ng-repeat="product in view.products | productsFilter : {material: view.material}" isotope-item="">
+                    <div class="he-wrap tpl6">
+                        <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
+                        <div class="he-view">
+                            <div class="bg a0" data-animate="fadeIn">
+                                <h3 class="a1" data-animate="fadeInDown">{{product.name}}</h3>
+                                <a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_01.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
+                                <a ng-href="#products/{{product.id}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                            </div><!-- he bg -->
+                        </div><!-- he view -->
+                    </div><!-- he wrap -->
+                </div>
+                <!--
+                                    <div class="portfolio-item graphic-design col-md-3" style="margin-top: 20px" id="extra" isotope-item="" class="kindling green">
+                                        <div class="he-wrap tpl6">
+                                            <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
+                                            <div class="he-view">
+                                                <div class="bg a0" data-animate="fadeIn">
+                                                    <h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>
+                                                    <a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_01.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
+                                                    <a href="single-portfolio-2.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    -->
 
-                    <div class="portfolio-item graphic-design col-md-3" style="margin-top: 20px" id="extra" isotope-item="" class="kindling green">
-                        <div class="he-wrap tpl6">
-                            <img src="assets/Theme/demos/portfolio_01.jpg" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>
-                                    <a data-rel="prettyPhoto" href="assets/Theme/demos/portfolio_01.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
-                                    <a href="single-portfolio-2.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div>
 
-
-                </div><!-- portfolio -->
+            </div><!-- portfolio -->
 
         </div><!-- portfolio container -->
 
@@ -56,86 +70,81 @@
         <div class="divider"></div>
 
         <script>
-
-            function showCategory(category) {
-                $('.portfolio-item').hide();
-                $(category).slideToggle();
-            }
             /*var $container = $('.portfolio'),
-                    $items = $container.find('.portfolio-item'),
-                    portfolioLayout = 'fitRows';
+             $items = $container.find('.portfolio-item'),
+             portfolioLayout = 'fitRows';
 
-            if ($container.hasClass('portfolio-centered')) {
-                portfolioLayout = 'masonry';
-            }
+             if ($container.hasClass('portfolio-centered')) {
+             portfolioLayout = 'masonry';
+             }
 
-            $container.isotope({
-                filter: '*',
-                animationEngine: 'best-available',
-                layoutMode: portfolioLayout,
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear',
-                    queue: false
-                },
-                masonry: {}
-            }, refreshWaypoints());
+             $container.isotope({
+             filter: '*',
+             animationEngine: 'best-available',
+             layoutMode: portfolioLayout,
+             animationOptions: {
+             duration: 750,
+             easing: 'linear',
+             queue: false
+             },
+             masonry: {}
+             }, refreshWaypoints());
 
-            function refreshWaypoints() {
-                setTimeout(function () {
-                }, 1000);
-            }
+             function refreshWaypoints() {
+             setTimeout(function () {
+             }, 1000);
+             }
 
-            $('nav.portfolio-filter ul a').on('click', function () {
-                var selector = $(this).attr('data-filter');
-                $container.isotope({filter: selector}, refreshWaypoints());
-                $('nav.portfolio-filter ul a').removeClass('active');
-                $(this).addClass('active');
-                return false;
-            });
+             $('nav.portfolio-filter ul a').on('click', function () {
+             var selector = $(this).attr('data-filter');
+             $container.isotope({filter: selector}, refreshWaypoints());
+             $('nav.portfolio-filter ul a').removeClass('active');
+             $(this).addClass('active');
+             return false;
+             });
 
-            function getColumnNumber() {
-                var winWidth = $(window).width(),
-                        columnNumber = 1;
+             function getColumnNumber() {
+             var winWidth = $(window).width(),
+             columnNumber = 1;
 
-                if (winWidth > 1200) {
-                    columnNumber = 5;
-                } else if (winWidth > 950) {
-                    columnNumber = 4;
-                } else if (winWidth > 600) {
-                    columnNumber = 3;
-                } else if (winWidth > 400) {
-                    columnNumber = 2;
-                } else if (winWidth > 250) {
-                    columnNumber = 1;
-                }
-                return columnNumber;
-            }
+             if (winWidth > 1200) {
+             columnNumber = 5;
+             } else if (winWidth > 950) {
+             columnNumber = 4;
+             } else if (winWidth > 600) {
+             columnNumber = 3;
+             } else if (winWidth > 400) {
+             columnNumber = 2;
+             } else if (winWidth > 250) {
+             columnNumber = 1;
+             }
+             return columnNumber;
+             }
 
-            function setColumns() {
-                var winWidth = $(window).width(),
-                        columnNumber = getColumnNumber(),
-                        itemWidth = Math.floor(winWidth / columnNumber);
+             function setColumns() {
+             var winWidth = $(window).width(),
+             columnNumber = getColumnNumber(),
+             itemWidth = Math.floor(winWidth / columnNumber);
 
-                $container.find('.portfolio-item').each(function () {
-                    $(this).css({
-                        width: itemWidth + 'px'
-                    });
-                });
-            }
+             $container.find('.portfolio-item').each(function () {
+             $(this).css({
+             width: itemWidth + 'px'
+             });
+             });
+             }
 
-            function setPortfolio() {
-                setColumns();
-                $container.isotope('reLayout');
-            }
+             function setPortfolio() {
+             setColumns();
+             $container.isotope('reLayout');
+             }
 
-            $container.imagesLoaded(function () {
-                setPortfolio();
-            });
+             $container.imagesLoaded(function () {
+             setPortfolio();
+             });
 
-            $(window).on('resize', function () {
-                setPortfolio();
-            });*/
+             $(window).on('resize', function () {
+             setPortfolio();
+             });*/
         </script>
 
     </div><!-- end clearix -->

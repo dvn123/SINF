@@ -26,10 +26,25 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
 
     }])
+    .filter('productsFilter', function() {
+        return function (items, params) {
+            var newItems = [];
+            var material = params.material;
+            for (var i = 0; i < items.length; i++) {
+                if (material == '*')
+                    newItems.push(items[i]);
+                else if (items[i].material == material)
+                    newItems.push(items[i]);
+            };
+
+            return newItems;
+        }
+    })
 
     .controller('viewCategoryCtrl', ['$http', '$route', function($http, $route) {
         var view = this;
         view.products = [ ];
+        view.material = '*';
 
         console.log($route.current.params);
         $http.get('viewProducts/list.JSON').success(function(data) {
@@ -37,6 +52,22 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                 view.products = data.products;
             }
         );
+
+        /*view.filter = function(products) {
+            var newProducts = [ ];
+
+            for(var i = 0; i < products.length; i++) {
+                if (view.material == '*')
+                    newProducts.push(products[i]);
+                else if (product.material == view.material)
+                    newProducts.push(products[i]);
+            }
+            return newProducts;
+        }*/
+
+        view.setMaterial = function(material) {
+            view.material = material;
+        }
 
 
 
