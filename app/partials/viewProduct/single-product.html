@@ -1,7 +1,7 @@
 	<section class="marketplace-top">
 		<div id="market-wrapper">
 			<div class="item_image">
-				<img data-effect="fade" class="aligncenter" width="1260" height="400" ng-src="{{product.imageURL}}" alt="">
+				<img data-effect="fade" class="aligncenter" width="1260" height="400" ng-src="{{product.image-links[0]}}" alt="">
 			</div><!-- end item_image -->
 		</div>
     </section>      
@@ -12,12 +12,10 @@
             
                 <div class="general-title text-center">
                     <h3>{{product.name}}</h3>
-                    <p>{{product.header1}}</p>
                     <hr>
                 </div>
 
                 <div class="divider"></div>
-
 
 
                 <div class="divider"></div>
@@ -28,9 +26,12 @@
                         <div class="theme_details">
                             <div class="details_section">
                                 <h3>Item Details</h3>
-                                    <ul>
-                                        <li ng-repeat="(key, val) in product.details" class="version">{{key}}: <span>{{val}}</span></li>
-                                    </ul>
+                                     <span ng-repeat="(key, array) in select_options">{{key}}:
+                                        <select ng-model="current[key]" ng-change="updateSelected(key)">
+                                            <option  ng-repeat="val in array">{{val}}</option>
+                                        </select>
+                                    <br></span>
+
                             </div>
                         </div>
                     </div><!-- col-lg-3 -->
@@ -50,7 +51,7 @@
                             </div><!-- item_price -->
                             <hr>
                             <div class="buttons">
-                                <a class="button btn-block large" href="#">SEE GALLERY</a>
+                                <a class="button btn-block large" href="#">{{product.subproducts[current].stock}} in Stock</a>
                                 <a class="button btn-block large" href="#"><i class="fa fa-download"></i> BUY NOW</a>
                             </div><!-- buttons -->
                         </div><!-- theme_details -->
@@ -59,9 +60,6 @@
                 </div><!-- item_details -->
                         
                	<div class="clearfix"></div>
-                
-
-
   			</div><!-- end content -->
             <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
                 <div class="general-title text-center">
@@ -74,7 +72,7 @@
                 <wrap-owlcarousel id="popularitems" class="owl-carousel" data-options="{items : 3, lazyLoad : true, navigation : false}">
                     <div class="col-lg-12">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.imageURL}}" alt="">
+                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">First Item</h3>
@@ -94,7 +92,7 @@
 
                     <div class="col-lg-12">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.imageURL}}" alt="">
+                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">Second Item</h3>
@@ -114,7 +112,7 @@
 
                     <div class="col-lg-12">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.imageURL}}" alt="">
+                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">Third Item</h3>
@@ -134,7 +132,7 @@
 
                     <div class="col-lg-12">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.imageURL}}" alt="">
+                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">Fourth Item</h3>
@@ -154,7 +152,7 @@
 
                     <div class="col-lg-12">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.imageURL}}" alt="">
+                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">Fifth Item</h3>
@@ -174,7 +172,7 @@
 
                     <div class="col-lg-12">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.imageURL}}" alt="">
+                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">Sixth Item</h3>
