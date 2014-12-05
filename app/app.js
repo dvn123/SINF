@@ -8,14 +8,12 @@ angular.module('myApp', [
     'myApp.viewProducts',
     'myApp.viewProduct',
     'myApp.version',
+    'myApp.history',
     'ui.bootstrap',
     'datatables'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
-            .when('/history', {
-                templateUrl: 'partials/history/history.html'
-            })
             .otherwise({redirectTo: '/view1'});
     }])
     .directive('wrapOwlcarousel', function () {
@@ -105,60 +103,5 @@ angular.module('myApp', [
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-        };
-    })
-    .factory("Auth", function ($http, $log) {
-        var user = {};
-
-        return {
-            isLoggedIn: function () {
-                return user;
-            },
-            register: function (user, success, error) {
-                /*
-                 $http.post('/register', user).success(function (res) {
-                 user = res;
-                 success();
-                 }).error(error);
-                 */
-                $http.get('login.json', user).success(function (res) {
-                    if (res.error)
-                        error(res.error);
-                    else {
-                        user = res;
-                        success(user);
-                    }
-                }).error(error);
-            },
-            login: function (user, success, error) {
-                /*
-                 $http.post('login.json', user).success(function (res) {
-                 if (res.error)
-                 error(res.error);
-                 else {
-                 user = res;
-                 success(user);
-                 }
-                 }).error(error);
-                 */
-                $http.get('login.json', user).success(function (res) {
-                    if (res.error)
-                        error(res.error);
-                    else {
-                        user = res;
-                        success(user);
-                    }
-                }).error(error);
-            },
-            logout: function (success, error) {
-                user = {};
-                success();
-                /*
-                 $http.post('/logout').success(function () {
-                 user = {};
-                 success();
-                 }).error(error);
-                 */
-            }
         };
     });
