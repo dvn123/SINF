@@ -10,12 +10,18 @@ angular.module('myApp', [
     'myApp.version',
     'myApp.history',
     'ui.bootstrap',
-    'datatables'
+    'datatables',
+    'angularUtils.directives.dirPagination'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .otherwise({redirectTo: '/view1'});
     }])
+
+    .config(function(paginationTemplateProvider) {
+        paginationTemplateProvider.setPath('bower_components/angular-utils-pagination/dirPagination.tpl.html');
+    })
+
     .directive('wrapOwlcarousel', function () {
         return {
             restrict: 'E',
