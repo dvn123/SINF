@@ -8,10 +8,14 @@ angular.module('myApp', [
     'myApp.viewProducts',
     'myApp.viewProduct',
     'myApp.version',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'datatables'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
+            .when('/history', {
+                templateUrl: 'partials/history/history.html'
+            })
             .otherwise({redirectTo: '/view1'});
     }])
     .directive('wrapOwlcarousel', function () {
