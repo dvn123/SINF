@@ -52,8 +52,8 @@
                             <hr>
                             <div class="buttons">
                                 <a class="button btn-block large" href="#">{{current["stock"]}} in Stock</a>
-                                <!--<a class="button btn-block large" href="#"><i class="fa fa-download"></i> BUY NOW</a>-->
-                                <ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" data="product">BUY NOW</ngcart-addtocart>
+                                <!--<a class="button btn-block large" ng-if="current['stock'] > 0" href="#"><i class="fa fa-download"></i> BUY NOW</a>-->
+                                <ngcart-addtocart ng-if="current['stock']" id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" data="product"><i class="fa fa-download"></i> BUY NOW</ngcart-addtocart>
                             </div><!-- buttons -->
                         </div><!-- theme_details -->
                     </div><!-- col-lg-3 -->
@@ -70,10 +70,10 @@
 
                 <div class="divider"></div>
 
-                <wrap-owlcarousel id="popularitems" class="owl-carousel" data-options="{items : 3, lazyLoad : true, navigation : false}">
-                    <div class="col-lg-12">
+                <wrap-owlcarousel id="popularitems" class="owl-carousel" data-options="{items : {{product.image_links.length % 4}}, lazyLoad : true, navigation : false}">
+                    <div class="col-lg-12" ng-repeat="image in product.links">
                         <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
+                            <img class="lazyOwl" ng-src="image" alt="">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">First Item</h3>
@@ -90,107 +90,6 @@
                             </div><!-- he view -->
                         </div><!-- he wrap -->
                     </div><!-- end col-12 -->
-
-                    <div class="col-lg-12">
-                        <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">Second Item</h3>
-                                    <a href="single-product.html" class="dmbutton a2" data-animate="fadeIn">Details</a>
-                                    <a href="checkout.html" class="dmbutton a2" data-animate="fadeIn">Buy now</a>
-                                    <div class="rating text-center a2" data-animate="fadeIn">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- rating -->
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div><!-- end col-12 -->
-
-                    <div class="col-lg-12">
-                        <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">Third Item</h3>
-                                    <a href="single-product.html" class="dmbutton a2" data-animate="fadeIn">Details</a>
-                                    <a href="checkout.html" class="dmbutton a2" data-animate="fadeIn">Buy now</a>
-                                    <div class="rating text-center a2" data-animate="fadeIn">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- rating -->
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div><!-- end col-12 -->
-
-                    <div class="col-lg-12">
-                        <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">Fourth Item</h3>
-                                    <a href="single-product.html" class="dmbutton a2" data-animate="fadeIn">Details</a>
-                                    <a href="checkout.html" class="dmbutton a2" data-animate="fadeIn">Buy now</a>
-                                    <div class="rating text-center a2" data-animate="fadeIn">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- rating -->
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div><!-- end col-12 -->
-
-                    <div class="col-lg-12">
-                        <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">Fifth Item</h3>
-                                    <a href="single-product.html" class="dmbutton a2" data-animate="fadeIn">Details</a>
-                                    <a href="checkout.html" class="dmbutton a2" data-animate="fadeIn">Buy now</a>
-                                    <div class="rating text-center a2" data-animate="fadeIn">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div><!-- rating -->
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div><!-- end col-12 -->
-
-                    <div class="col-lg-12">
-                        <div class="he-wrap tpl6 market-item">
-                            <img class="lazyOwl" ng-src="{{product.image-links[0]}}" alt="">
-                            <div class="he-view">
-                                <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">Sixth Item</h3>
-                                    <a href="single-product.html" class="dmbutton a2" data-animate="fadeIn">Details</a>
-                                    <a href="checkout.html" class="dmbutton a2" data-animate="fadeIn">Buy now</a>
-                                    <div class="rating text-center a2" data-animate="fadeIn">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div><!-- rating -->
-                                </div><!-- he bg -->
-                            </div><!-- he view -->
-                        </div><!-- he wrap -->
-                    </div><!-- end col-12 -->
-
                 </wrap-owlcarousel><!-- popular items -->
             </div><!-- end content -->
 		</div><!-- end container -->
