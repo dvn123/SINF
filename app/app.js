@@ -11,7 +11,8 @@ angular.module('myApp', [
     'myApp.history',
     'ui.bootstrap',
     'datatables',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ngCart'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
