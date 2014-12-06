@@ -9,6 +9,7 @@ angular.module('myApp', [
     'myApp.viewProduct',
     'myApp.version',
     'myApp.history',
+    'myApp.viewCheckout',
     'ui.bootstrap',
     'datatables',
     'angularUtils.directives.dirPagination',

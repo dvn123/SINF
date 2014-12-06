@@ -52,7 +52,8 @@
                             <hr>
                             <div class="buttons">
                                 <a class="button btn-block large" href="#">{{current["stock"]}} in Stock</a>
-                                <a class="button btn-block large" href="#"><i class="fa fa-download"></i> BUY NOW</a>
+                                <!--<a class="button btn-block large" href="#"><i class="fa fa-download"></i> BUY NOW</a>-->
+                                <ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" data="product">BUY NOW</ngcart-addtocart>
                             </div><!-- buttons -->
                         </div><!-- theme_details -->
                     </div><!-- col-lg-3 -->
