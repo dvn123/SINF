@@ -5,7 +5,7 @@ angular.module('myApp')
         var user = {};
 
         return {
-            isLoggedIn: function () {
+            getCurrentUser: function () {
                 return user;
             },
             register: function (user, success, error) {
@@ -16,6 +16,22 @@ angular.module('myApp')
                  }).error(error);
                  */
                 $http.get('login.json', user).success(function (res) {
+                    if (res.error)
+                        error(res.error);
+                    else {
+                        user = res;
+                        success(user);
+                    }
+                }).error(error);
+            },
+            edit: function (user, success, error) {
+                /*
+                 $http.post('/register', user).success(function (res) {
+                 user = res;
+                 success();
+                 }).error(error);
+                 */
+                $http.get('loginerror.json', user).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {

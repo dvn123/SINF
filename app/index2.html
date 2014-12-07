@@ -135,15 +135,10 @@
                 </div>
             </script>
 
-            <p>{{user}}</p>
-
-
             <div class="col-lg-9 col-md-12 col-sm-12">
                 <div id="nav" class="right">
                     <div class="container clearfix">
                         <ul id="jetmenu" class="jetmenu blue">
-                            <li><a href="" ng-click="open(sm)" ng-show="!hasUser()">Login</a></li>
-                            <li><a href="" ng-click="logout()" ng-show="hasUser()">Logout</a></li>
                             <li class="active"><a href="#">Home</a>
                                 <ul class="dropdown">
                                     <li><a href="index.html">Home - Shop Version</a></li>
@@ -151,59 +146,9 @@
                                     <li><a href="index3.html">Home - Business Version</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="team-members.html">Team Members</a></li>
-                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                    <li><a href="404.html">404 Error</a></li>
-                                    <li><a href="faq.html">FAQ Page</a></li>
-                                    <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                                    <li><a href="fullwidth.html">Full Width</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="digital-download.html">Products Page</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="account.html">Account Page</a></li>
-                                    <li><a href="support.html">Support Center</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Portfolio</a>
-                                <ul class="dropdown">
-                                    <li><a href="single-portfolio-1.html">Single Portfolio 1</a></li>
-                                    <li><a href="single-portfolio-2.html">Single Portfolio 2</a></li>
-                                    <li><a href="portfolio-2.html">Portfolio (2 Columns)</a></li>
-                                    <li><a href="portfolio-3.html">Portfolio (3 Columns)</a></li>
-                                    <li><a href="gallery-portfolio.html">Gallery</a></li>
-                                    <li><a href="masonry-grid-portfolio.html">Masonry Grid Style</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Products</a>
-                                <ul class="dropdown">
-                                    <li><a href="#/viewProducts/backpacks">Backpacks</a></li>
-                                    <li><a href="#/viewProducts/handbags">Handbags</a></li>
-                                    <li><a href="#/viewProducts/hard-cases">Hard cases</a></li>
-                                    <li><a href="#/viewProducts/shoulder-bags">Shoulder bags</a></li>
-                                    <li><a href="#/viewProducts/sleeves">Sleeves</a></li>
-                                    <li><a href="#/viewProducts/totes">Totes</a></li>
-                                    <li><a href="#/viewProducts/wheeled">Wheeled</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                    <li><a href="single-with-sidebar.html">Single with Sidebar</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="" ng-click="open(sm)" ng-show="!hasUser()">Login</a></li>
+                            <li><a href="" ng-click="logout()" ng-show="hasUser()">Logout</a></li>
+                            <li><a href="#/history" ng-show="hasUser()">My profile</a></li>
                             <li>
                                 <a ng-href="#/checkout">
                                     <ngcart-summary></ngcart-summary>
@@ -379,11 +324,11 @@
     });
 </script>
 <style>
-    #DataTables_Table_0_paginate {
+    .dataTables_paginate {
         float: right;
     }
 
-    #DataTables_Table_0_paginate a {
+    .dataTables_paginate a {
         margin: 2px;
     }
 </style>
