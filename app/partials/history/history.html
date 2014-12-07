@@ -1,6 +1,64 @@
 <section class="section1">
     <div class="container clearfix">
         <div class="content clearfix">
+            <div class="form-panel" ng-controller="userProfileCtrl">
+                <h4 class="mb"><i class="fa fa-angle-right"></i>User profile</h4><br/>
+
+                <div ng-show="errorMessage.length > 0" class="alert alert-danger">{{errorMessage}}</div>
+
+                <form class="form-horizontal style-form" ng-submit="editUser()">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">E-mail</label>
+
+                        <div class="col-sm-3">
+                            <input type="email" class="form-control" placeholder="{{user.email}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Tax ID number</label>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="{{user.tid}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Old password</label>
+
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': differentPasswords()}">
+                        <label class="col-sm-2 col-sm-2 control-label">New password</label>
+
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control" ng-model="newuser.password">
+
+                            <p class="help-block" ng-show="differentPasswords()">Passwords must be equal</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': differentPasswords()}">
+                        <label class="col-sm-2 col-sm-2 control-label">New password confirmation</label>
+
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control" ng-model="newuser.password2">
+
+                            <p class="help-block" ng-show="differentPasswords()">Passwords must be equal</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">
+                            <button type="submit" class="btn btn-theme" id="editFormSubmitButton">Save changes</button>
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <br/>
+
+            <h4 class="mb"><i class="fa fa-angle-right"></i>User history</h4>
+            <br/>
             <table datatable="ng" class="table table-striped">
                 <thead>
                 <tr>

@@ -48,7 +48,7 @@ angular.module('myApp', [
             });
         };
 
-        $scope.user = Auth.isLoggedIn();
+        $scope.user = Auth.getCurrentUser();
 
         $scope.hasUser = function () {
             return typeof $scope.user.email !== 'undefined';
