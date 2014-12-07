@@ -11,6 +11,7 @@ angular.module('myApp', [
     'myApp.history',
     'myApp.viewCheckout',
     'myApp.faq',
+    'myApp.contact',
     'ui.bootstrap',
     'datatables',
     'angularUtils.directives.dirPagination',
