@@ -1,4 +1,4 @@
-ngCart
+ngCart - added to repo because I changed default behaviour
 ======
 
 Really simple shopping cart for AngularJS
