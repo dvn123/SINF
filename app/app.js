@@ -10,6 +10,7 @@ angular.module('myApp', [
     'myApp.version',
     'myApp.history',
     'myApp.viewCheckout',
+    'myApp.faq',
     'ui.bootstrap',
     'datatables',
     'angularUtils.directives.dirPagination',
