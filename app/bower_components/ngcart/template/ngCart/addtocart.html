@@ -5,11 +5,11 @@
 </div>
 <div ng-show="attrs.id">
     <div ng-hide="inCart()">
-        <a class="btn btn-lg btn-primary"
+        <a class="button btn-block large"
            ng-click="ngCart.addItem(id, name, price, quantity, data)"
            ng-transclude></a>
     </div>
-    <div class="alert alert-info"  ng-show="inCart()">
+    <div class="text-center alert-brown" ng-show="inCart()">
         This item is in your cart
     </div>
 
