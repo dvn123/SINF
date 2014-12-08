@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-    .factory("Auth", function ($http, $log) {
-        var user = {};
+    .factory("Auth", function ($http, $log, $cookieStore) {
+        var user = $cookieStore.get('user') || {};
 
         return {
             getCurrentUser: function () {
@@ -19,6 +19,7 @@ angular.module('myApp')
                     if (res.error)
                         error(res.error);
                     else {
+                        $cookieStore.put('user', user);
                         user = res;
                         success(user);
                     }
@@ -35,6 +36,7 @@ angular.module('myApp')
                     if (res.error)
                         error(res.error);
                     else {
+                        $cookieStore.put('user', user);
                         user = res;
                         success(user);
                     }
@@ -55,6 +57,7 @@ angular.module('myApp')
                     if (res.error)
                         error(res.error);
                     else {
+                        $cookieStore.put('user', user);
                         user = res;
                         success(user);
                     }
@@ -62,6 +65,7 @@ angular.module('myApp')
             },
             logout: function (success, error) {
                 user = {};
+                $cookieStore.remove('user');
                 success();
                 /*
                  $http.post('/logout').success(function () {
