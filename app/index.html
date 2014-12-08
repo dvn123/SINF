@@ -143,10 +143,16 @@
                             <li ng-show="hasUser()"><a href="" ng-click="logout()">Logout</a></li>
                             <li ng-show="hasUser()"><a href="#/history">History</a></li>
                             <li class="active"><a href="#">Home</a>
+                            </li>
+                            <li class="products"><a href="#/viewProducts/">Products</a>
                                 <ul class="dropdown">
-                                    <li><a href="index.html">Home - Shop Version</a></li>
-                                    <li><a href="index.html">Home - Agency Version</a></li>
-                                    <li><a href="index3.html">Home - Business Version</a></li>
+                                    <li><a href="#/viewProducts/backpacks">Backpacks</a></li>
+                                    <li><a href="#/viewProducts/handbags">Handbags</a></li>
+                                    <li><a href="#/viewProducts/hard-cases">Hard cases</a></li>
+                                    <li><a href="#/viewProducts/shoulder-bags">Shoulder bags</a></li>
+                                    <li><a href="#/viewProducts/sleeves">Sleeves</a></li>
+                                    <li><a href="#/viewProducts/totes">Totes</a></li>
+                                    <li><a href="#/viewProducts/wheeled">Wheeled</a></li>
                                 </ul>
                             </li>
                             <li class="checkout">
@@ -312,7 +318,7 @@
 <script src="partials/viewCheckout/viewCheckout.js"></script>
 <script src="partials/faq/faq.js"></script>
 <script src="partials/contact/contact.js"></script>
-<script src="viewProducts/viewProducts.js"></script>
+<script src="partials/viewProducts/viewProducts.js"></script>
 <script src="services/auth.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>

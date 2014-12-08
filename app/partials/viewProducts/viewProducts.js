@@ -4,10 +4,10 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/viewProducts', {
-            templateUrl: 'viewProducts/viewProducts.html',
+            templateUrl: 'partials/viewProducts/viewProducts.html',
             controller: 'viewProductsCtrl'
         }).when('/viewProducts/:category', {
-            templateUrl: 'viewProducts/viewProducts.html',
+            templateUrl: 'partials/viewProducts/viewProducts.html',
             controller: 'viewCategoryCtrl'
         });
     }])
@@ -16,7 +16,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         var view = this;
         view.products = [ ];
 
-        $http.get('viewProducts/list.JSON').success(function(data) {
+        $http.get('partials/viewProducts/list.JSON').success(function(data) {
                 view.products = data.products;
             }
         );
@@ -39,7 +39,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         view.color = '*';
 
         console.log($route.current.params);
-        $http.get('viewProducts/list.JSON').success(function(data) {
+        $http.get('partials/viewProducts/list.JSON').success(function(data) {
                 view.products = data.products;
             }
         );
