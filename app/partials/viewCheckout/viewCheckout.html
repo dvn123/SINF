@@ -2,35 +2,12 @@
     <div class="container clearfix">
         <div class="content col-lg-8 col-md-8 col-sm-8 col-xs-12 clearfix">
 
-            <!--<table class="table table-striped checkout" data-effect="fade">-->
-            <!--<thead>-->
-            <!--<tr>-->
-            <!--<th>Item Name</th>-->
-            <!--<th>Item Price</th>-->
-            <!--<th>Quantity</th>-->
-            <!--<th>Actions</th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr>-->
-            <!--<td><img width="50" src="demos/recent_post_01.png" alt=""> <a href="#">MaxDash Bootstrap Theme</a></td>-->
-            <!--<td>$18.00</td>-->
-            <!--<td><input id="verify" class="form-control quantity" type="text" value="1" name=""></td>-->
-            <!--<td><a class="remove" href="#" title="Remove this item"></a></td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-            <!--</table>-->
-
             <ngcart-cart></ngcart-cart>
-            <!--<div class="clearfix"></div>-->
 
-            <!--<div class="pull-right">-->
-            <!--<a class="button" href="#">UPDATE CART</a> <a class="button" href="#">SAVE CART</a>-->
-            <!--</div>-->
+            <div class="alert alert-dismissable alert-danger" ng-controller="CartController as xController">
+                {{ngCart.getItems()}}
+            </div>
 
-            <!--<div class="clearfix"></div>-->
-
-            <!--<div class="well text-right"><strong>TOTAL: $18.00</strong></div>-->
 
             <div class="clearfix"></div>
 
