@@ -10,56 +10,61 @@ angular.module('myApp')
             },
             register: function (user, success, error) {
                 /*
-                 $http.post('/register', user).success(function (res) {
-                 user = res;
-                 success();
-                 }).error(error);
+                 $http.post('/Customers/', user)
                  */
+                $log.log("Antes register: ");
+                $log.log(user);
+
                 $http.get('login.json', user).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {
-                        $cookieStore.put('user', user);
+                        $cookieStore.put('user', res);
                         user = res;
-                        success(user);
+
+                        $log.log("Depois register: ");
+                        $log.log(user);
+
+                        success(res);
                     }
                 }).error(error);
             },
             edit: function (user, success, error) {
                 /*
-                 $http.post('/register', user).success(function (res) {
-                 user = res;
-                 success();
-                 }).error(error);
+                 $http.put('/Customers/', user)
                  */
-                $http.get('loginerror.json', user).success(function (res) {
+                $log.log("Antes edit: ");
+                $log.log(user);
+
+                $http.get('login.json', user).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {
-                        $cookieStore.put('user', user);
+                        $cookieStore.put('user', res);
                         user = res;
-                        success(user);
+
+                        $log.log("Depois edit: ");
+                        $log.log(user);
+
+                        success(res);
                     }
                 }).error(error);
             },
             login: function (user, success, error) {
                 /*
-                 $http.post('login.json', user).success(function (res) {
-                 if (res.error)
-                 error(res.error);
-                 else {
-                 user = res;
-                 success(user);
-                 }
-                 }).error(error);
+                 $http.post('/Customers/login', user)
                  */
                 $http.get('login.json', user).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {
-                        $cookieStore.put('user', user);
+                        $cookieStore.put('user', res);
                         user = res;
-                        success(user);
+
+                        $log.log("Depois login: ");
+                        $log.log(user);
+
+                        success(res);
                     }
                 }).error(error);
             },
@@ -68,8 +73,9 @@ angular.module('myApp')
                 $cookieStore.remove('user');
                 success();
                 /*
-                 $http.post('/logout').success(function () {
+                 $http.post('/Customers/logout', user).sucess(function(res) {
                  user = {};
+                 $cookieStore.remove('user');
                  success();
                  }).error(error);
                  */
