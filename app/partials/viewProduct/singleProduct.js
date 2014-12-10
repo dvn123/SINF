@@ -11,6 +11,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
     }])
 
     .controller('viewProductCtrl', ['$http', '$scope', '$routeParams' ,function($http, $scope, $routeParams) {
+
         $http.get('partials/viewProduct/1.json').success(function(data) {
             $scope.product = data.product;
             $scope.current = {};
@@ -40,8 +41,8 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
             $scope.select_options_full = $scope.select_options;
             $scope.filter = {};
+            $scope.filter_update($scope.master_select);
         });
-
 
         $scope.updateSelected = function(obj) {
             console.log("Key: " + obj);
@@ -50,6 +51,10 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 return;
             }
 
+            $scope.filter_update(obj);
+        };
+
+        $scope.filter_update = function(obj) {
             var selected_object = null;
 
 
@@ -59,7 +64,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
 
-            console.log(JSON.stringify($scope.filter));
+            //console.log(JSON.stringify($scope.filter));
 
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 if ($scope.current[obj] == $scope.product.subproducts[i][obj]) {
@@ -67,7 +72,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                     console.log(selected_object);
                     for (var key in selected_object) {
                         //console.log(key);
-                        if(key != $scope.master_select)
+                        if(key != $scope.master_select && $scope.filter[key].indexOf(selected_object[key]) == -1)
                             $scope.filter[key].push(selected_object[key]);
                     }
                 }
@@ -83,8 +88,6 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             }
             $scope.current["stock"] =  $scope.filter["stock"][0]
         };
-
-
 
         $scope.updateStock = function(obj) {
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
@@ -103,5 +106,5 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                     $scope.current["stock"] = $scope.product.subproducts[i]["stock"];
                 }
             }
-        }
+        };
     }]);

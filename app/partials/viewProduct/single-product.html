@@ -28,7 +28,7 @@
                             <h3>Item Details</h3>
                                      <span ng-repeat="(key, array) in select_options">{{key}}:
                                         <select ng-model="current[key]" ng-change="updateSelected(key)">
-                                            <option  ng-repeat="val in array">{{val}}</option>
+                                            <option ng-repeat="val in array">{{val}}</option>
                                         </select>
                                     <br></span>
 
@@ -53,7 +53,7 @@
                         <div class="buttons">
                             <a class="button btn-block large" href="#">{{current["stock"]}} in Stock</a>
                             <!--<a class="button btn-block large" ng-if="current['stock'] > 0" href="#"><i class="fa fa-download"></i> BUY NOW</a>-->
-                            <ngcart-addtocart ng-if="current['stock']" id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" data="product"><i class="fa fa-shopping-cart"></i> BUY NOW</ngcart-addtocart>
+                            <ngcart-addtocart ng-if="current['stock']" id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" data="current"><i class="fa fa-shopping-cart"></i> BUY NOW</ngcart-addtocart>
                         </div><!-- buttons -->
                     </div><!-- theme_details -->
                 </div><!-- col-lg-3 -->
@@ -71,7 +71,7 @@
 
             <div class="divider"></div>
 
-            <wrap-owlcarousel id="popularitems" class="owl-carousel" data-options="{items : {{product.image_links.length % 4}}, lazyLoad : true, navigation : false}">
+            <wrap-owlcarousel id="popularitems" class="owl-carousel" data-options="{items : 3, lazyLoad : true, navigation : false}">
                 <div class="col-lg-12" ng-repeat="image in product.links">
                     <div class="he-wrap tpl6 market-item">
                         <img class="lazyOwl" ng-src="image" alt="">
