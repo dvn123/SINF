@@ -6,13 +6,15 @@
         <nav class="portfolio-filter clearfix" >
             <ul>
                 <li><a href="" class="dmbutton2" ng-click='view.setMaterial("*")'>All</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("canvas")'>Canvas</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("Fabric")'>Fabric</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("faux fur")'>Faux fur</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("ard plastic")'>Hard plastic</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("Leather")'>Leather</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("neoprene")'>Neoprene</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("nylon")'>Nylon</a></li>
+                <li ng-repeat="material in view.materials"><a href="" class="dmbutton2" ng-click='view.setMaterial(material)'>{{material}}</a>
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("*")'>All</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("canvas")'>Canvas</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("Fabric")'>Fabric</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("faux fur")'>Faux fur</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("ard plastic")'>Hard plastic</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("Leather")'>Leather</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("neoprene")'>Neoprene</a></li>-->
+                <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("nylon")'>Nylon</a></li>-->
             </ul>
         </nav>
 
@@ -20,7 +22,7 @@
             <ul>
                 <!--TODO: change to circles -->
                 <li><a href="" class="dmbutton2" ng-click='view.setColor("*")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: red" ng-click='view.setColor("red")'></a></li>
+                <li><a href="" class="dmbutton2" title="red" style="background-color: red" ng-click='view.setColor("red")'></a></li>
                 <li><a href="" class="dmbutton2" style="background-color: blue" ng-click='view.setColor("blue")'></a></li>
                 <li><a href="" class="dmbutton2" style="background-color: green" ng-click='view.setColor("green")'></a></li>
                 <li><a href="" class="dmbutton2" style="background-color: saddlebrown" ng-click='view.setColor("brown")'></a></li>

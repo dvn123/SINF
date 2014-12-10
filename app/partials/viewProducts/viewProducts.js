@@ -29,8 +29,11 @@ angular.module('myApp.viewProducts', ['ngRoute'])
      }])*/
     .filter('productsFilter', function() {
         return function (items, params) {
-            var material = filter("material", params.material, items);
-            return filter("colors", params.color, material);
+            var filteredByMaterial = filter("material", params.material, items);
+
+            return filterByColor(filteredByMaterial, params.color);
+            //var material = filter("material", params.material, items);
+            //return filter("colors", params.color, material);
             //return filterByColor(selectedMaterial, params.selectedColor);
         }
     })
@@ -44,6 +47,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
         view.setMaterial = function(material) {
             view.selectedMaterial = material;
+            console.log("New material: " + material);
         };
 
         view.setColor = function(color) {
@@ -69,7 +73,6 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         $http.get(link).success(function(data) {
                 view.products = data.products;
                 view.materials = getMaterials(data.products);
-                console.log(view.materials);
             }
         );
 
@@ -111,13 +114,7 @@ function filter(field, filter, items) {
         }
 
         var value = items[i][field];
-        if (typeof value == "object") {
-            for(var j = 0; j < value.length; j++)
-                if (value[j] == filter)
-                    newItems.push(items[i]);
-
-        }
-        else if (value == filter)
+        if (value.toUpperCase() == filter.toUpperCase())
             newItems.push(items[i]);
     };
 
@@ -125,13 +122,16 @@ function filter(field, filter, items) {
 }
 
 function filterByColor(items, color) {
+
+    if (color === "*")
+        return items;
+
     var newItems = [];
 
     for(var i = 0; i < items.length; i++) {
         var subproducts = items[i].subproducts;
         for(var j = 0; j < subproducts.length; j++) {
-            if(subproducts[j].selectedColor.toUpperCase === color.toUpperCase) {
-                console.log(subproducts[j]);
+            if(subproducts[j].color.toUpperCase() === color.toUpperCase()) {
                 newItems.push(items[i]);
                 break;
             }
@@ -145,8 +145,8 @@ function getMaterials(products) {
 
 
     for(var i in products) {
-        console.log(products);
-        //if (!(products[i].material in materials))
+        // console.log(products);
+        if (materials.indexOf(products[i].material) == -1)
             materials.push(products[i].material);
     }
 
