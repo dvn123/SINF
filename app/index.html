@@ -167,11 +167,11 @@
                 <div id="nav" class="right">
                     <div class="container clearfix">
                         <ul id="jetmenu" class="jetmenu blue">
-                            <li ng-show="!hasUser()"><a href="" ng-click="open(sm)">Login</a></li>
-                            <li ng-show="hasUser()"><a href="" ng-click="logout()">Logout</a></li>
-                            <li ng-show="hasUser()"><a href="#/history">History</a></li>
-                            <li ng-show="hasUser()"><a href="#/edituser">Edit User</a></li>
-                            <li class="active"><a href="#">Home</a>
+                            <!--<li ng-show="!hasUser()"><a href="" ng-click="open(sm)">Login</a></li>-->
+                            <!--<li ng-show="hasUser()"><a href="" ng-click="logout()">Logout</a></li>-->
+                            <!--<li ng-show="hasUser()"><a href="#/history">History</a></li>-->
+                            <!--<li ng-show="hasUser()"><a href="#/edituser">Edit User</a></li>-->
+                            <li class="active"><a href="#home">Home</a>
                             </li>
                             <li class="products"><a href="#/viewProducts/">Products</a>
                                 <ul class="dropdown">
@@ -184,8 +184,23 @@
                                     <li><a href="#/viewProducts/wheeled">Wheeled</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#/faq">FAQ</a>
-                            <li><a href="#/contact">Contact us</a></li>
+                            <li class="faq"><a href="#/faq">FAQ</a>
+                            <li class="contact"><a href="#/contact">Contact us</a></li>
+
+                            <li class="pull-right" ng-show="!hasUser()"><a href="" ng-click="open(sm)">Login</a></li>
+                            <li class="pull-right" ng-show="hasUser()">
+                                <div style="margin-top: 7px">
+
+                                    <div class="row text-right">
+                                        Welcome {{user.name}}!
+                                    </div>
+                                    <div class="row text-right">
+                                        <a href="#/history">Account</a> |
+                                        <a href="" class="text-muted" ng-click="logout()">Logout</a>
+                                    </div>
+                                </div>
+
+                            </li>
                             <li class="checkout pull-right">
                                 <a ng-href="#/checkout">
                                     <ngcart-summary></ngcart-summary>
@@ -363,6 +378,7 @@
             lazyLoad: true,
             navigation: false
         });
+        $('#jetmenu .checkout a').css("border-top", $('body').css("background-color"));
     });
 </script>
 <style>
