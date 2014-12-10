@@ -61,7 +61,7 @@
         <div class="site-header clearfix">
             <div class="col-lg-3 col-md-3 col-sm-12 title-area">
                 <div class="site-title" id="title">
-                    <a href="index.html" title="">
+                    <a href="#/home" title="">
                         <h4>TECH<span>BAGS</span></h4>
                     </a>
                 </div>
@@ -175,12 +175,12 @@
                             </li>
                             <li class="products"><a href="#/viewProducts/">Products</a>
                                 <ul class="dropdown">
-                                    <li><a href="#/viewProducts/backpacks">Backpacks</a></li>
-                                    <li><a href="#/viewProducts/handbags">Handbags</a></li>
-                                    <li><a href="#/viewProducts/hard-cases">Hard cases</a></li>
-                                    <li><a href="#/viewProducts/shoulder-bags">Shoulder bags</a></li>
-                                    <li><a href="#/viewProducts/sleeves">Sleeves</a></li>
-                                    <li><a href="#/viewProducts/totes">Totes</a></li>
+                                    <li><a href="#/viewProducts/backpack">Back Pack</a></li>
+                                    <li><a href="#/viewProducts/hardcase">Hard Case</a></li>
+                                    <li><a href="#/viewProducts/messenger">Messenger Bag</a></li>
+                                    <li><a href="#/viewProducts/shoulder">Shoulder Bag</a></li>
+                                    <li><a href="#/viewProducts/sleeve">Sleeve</a></li>
+                                    <li><a href="#/viewProducts/tole">Tole</a></li>
                                     <li><a href="#/viewProducts/wheeled">Wheeled</a></li>
                                 </ul>
                             </li>
@@ -192,7 +192,7 @@
                                 <div style="margin-top: 7px">
 
                                     <div class="row text-right">
-                                        Welcome {{user.name}}!
+                                        Welcome {{user.name | TruncateWords: 1}}!
                                     </div>
                                     <div class="row text-right">
                                         <a href="#/history">Account</a> |

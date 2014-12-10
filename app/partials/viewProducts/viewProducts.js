@@ -32,6 +32,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         view.selectedMaterial = '*';
         view.selectedColor = '*';
         view.materials = [ ];
+        view.categoryHasResults = true;
 
         view.setMaterial = function(material) {
             view.selectedMaterial = material;
@@ -50,18 +51,36 @@ angular.module('myApp.viewProducts', ['ngRoute'])
             return view.selectedMaterial;
         }
 
+        var category = $route.current.params.category;
+        var categoryFinal = "";
 
-        if ($route.current.params.category)
-            console.log("has category")
+        if (category) {
+            category = category.toUpperCase();
+            console.log("has category");
+
+            if(category === "BACKPACK" || category === "HARDCASE"
+                || category === "MESSENGER" || category === "SHOULDER"
+                || category === "SLEEVE" || category === "TOLE"
+                || category === "WHEELED")
+                categoryFinal = "bycategory/" + category;
+
+        }
         else
             console.log("hasn't category");
-        //console.log($route.current.params);
 
 
-        $http.get(link + 'products/').success(function(data) {
+
+
+        $http.get(link + 'products/' + categoryFinal).success(function(data) {
+                view.categoryHasResults = true;
+                console.log("success: " + JSON.stringify(data));
                 view.products = data.products;
                 view.materials = getMaterials(data.products);
                 view.colors = getColors(data.products);
+
+                if (data.products.length === 0) {
+                    view.categoryHasResults = false;
+                }
             }
         );
 
