@@ -10,6 +10,7 @@ angular.module('myApp', [
     'myApp.viewProduct',
     'myApp.version',
     'myApp.history',
+    'myApp.editUser',
     'myApp.viewCheckout',
     'myApp.faq',
     'myApp.contact',
