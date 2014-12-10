@@ -68,97 +68,7 @@
             </div>
 
             <!-- Login Modal -->
-            <script type="text/ng-template" id="loginModal.html">
-                <div class="container">
-                    <div ng-show="activeForm == 'login'">
-                        <br/>
 
-                        <div ng-show="errorMessage.length > 0" class="alert alert-danger">{{errorMessage}}</div>
-                        <form class="form-login" ng-submit="ok()">
-                            <h2 class="form-login-heading">sign in now</h2>
-
-                            <div class="login-wrap">
-                                <input type="email" class="form-control" placeholder="E-mail" autofocus
-                                       ng-model="newuser.email" required>
-                                <input type="password" class="form-control" placeholder="Password"
-                                       ng-model="newuser.password" required>
-                                <button class="btn btn-theme btn-block" type="submit" id="modalLoginButton"><i
-                                        class="fa fa-lock"></i> SIGN IN
-                                </button>
-                                <hr>
-                                <div class="registration">
-                                    Don't have an account yet?<br/>
-                                    <a href="" ng-click="switchToRegister()">
-                                        Create an account
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div ng-show="activeForm == 'register'">
-                        <br/>
-
-                        <div ng-show="errorMessage.length > 0" class="alert alert-danger">{{errorMessage}}</div>
-                        <form class="form-login" ng-submit="ok()">
-                            <h2 class="form-login-heading">register account now</h2>
-
-                            <div class="login-wrap">
-                                <div class="form-group">
-                                    <input type="email" class="form-control input-sm" placeholder="E-mail" autofocus
-                                           ng-model="newuser.email" required>
-                                </div>
-
-                                <div class="form-group" ng-class="{'has-error': differentPasswords()}">
-                                    <input type="password" class="form-control input-sm" placeholder="Password"
-                                           ng-model="newuser.password" required>
-                                    <input type="password" class="form-control input-sm" placeholder="Confirm password"
-                                           ng-model="newuser.password2" required>
-
-                                    <p class="help-block" ng-show="differentPasswords()">Passwords must be equal</p>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="number" minlength="9" maxlength="9" class="form-control input-sm" placeholder="Tax ID"
-                                           ng-model="newuser.tax_id" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-sm" placeholder="Street"
-                                           ng-model="newuser.street">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-sm" placeholder="City"
-                                           ng-model="newuser.city">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-sm" size="4" maxlength="4" placeholder="Zip Code 1"
-                                           ng-model="newuser.zip_code1">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-sm" size="3" maxlength="3" placeholder="Zip Code 2"
-                                           ng-model="newuser.zip_code2">
-                                </div>
-
-                                <button class="btn btn-theme btn-block" type="submit" id="modalRegisterButton"
-                                        ng-disabled="invalidForm()"><i
-                                        class="fa fa-lock"></i> REGISTER
-                                </button>
-                                <hr>
-                                <div class="login">
-                                    Already have an account?<br/>
-                                    <a href="" ng-click="switchToLogin()">
-                                        Login
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </script>
 
             <div class="col-lg-9 col-md-12 col-sm-12">
                 <div id="nav" class="right">
@@ -181,6 +91,8 @@
                                     <li><a href="#/viewProducts/wheeled">Wheeled</a></li>
                                 </ul>
                             </li>
+                            <li><a href="#/faq">FAQ</a>
+                            <li><a href="#/contact">Contact us</a></li>
                             <li class="checkout pull-right">
                                 <a ng-href="#/checkout">
                                     <ngcart-summary></ngcart-summary>
@@ -200,17 +112,17 @@
 <!-- end header -->
 
 
-<ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/">home</a></li>
-    <li><a href="#/viewProducts">viewProducts</a></li>
-    <li><a href="#/products/1">viewProduct</a></li>
-    <li><a href="#/history">History</a></li>
-    <li><a href="#/checkout">Checkout</a></li>
-    <li><a href="#/faq">FAQ</a></li>
-    <li><a href="#/contact">Contact</a></li>
-</ul>
-<div>Angular seed app: v<span app-version></span></div>
+<!--<ul class="menu">-->
+    <!--<li><a href="#/view1">view1</a></li>-->
+    <!--<li><a href="#/">home</a></li>-->
+    <!--<li><a href="#/viewProducts">viewProducts</a></li>-->
+    <!--<li><a href="#/products/1">viewProduct</a></li>-->
+    <!--<li><a href="#/history">History</a></li>-->
+    <!--<li><a href="#/checkout">Checkout</a></li>-->
+    <!--<li><a href="#/faq">FAQ</a></li>-->
+    <!--<li><a href="#/contact">Contact</a></li>-->
+<!--</ul>-->
+<!--<div>Angular seed app: v<span app-version></span></div>-->
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -278,22 +190,22 @@
 
     <div class="copyrights">
         <div class="container">
-            <div class="col-lg-6 col-md-6 col-sm-12 columns">
-                <p>Copyright © 2014 - All rights reserved. Designed by <a title="Bootstrap Themes"
-                                                                          href="http://alvarez.is">Alvarez</a></p>
+            <div class="col-lg-6 col-md-6 col-sm-12 columns pull-right">
+
             </div>
+            <p class="pull-right">Copyright © 2014 - All rights reserved.</p>
             <!-- end widget -->
-            <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
-                <div class="footer-menu right">
-                    <ul class="menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Site Terms</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
+            <!--<div class="col-lg-6 col-md-6 col-sm-12 columns text-right">-->
+                <!--<div class="footer-menu right">-->
+                    <!--<ul class="menu">-->
+                        <!--<li><a href="#">Home</a></li>-->
+                        <!--<li><a href="#">About</a></li>-->
+                        <!--<li><a href="#">Sitemap</a></li>-->
+                        <!--<li><a href="#">Site Terms</a></li>-->
+                        <!--<li><a href="#">Contact</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
             <!-- end large-6 -->
         </div>
         <!-- end container -->

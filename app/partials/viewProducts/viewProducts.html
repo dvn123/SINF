@@ -19,17 +19,17 @@
         </nav>
 
         <nav class="portfolio-filter" style="margin-top: -25px">
-            <ul>
                 <!--TODO: change to circles -->
-                <li><a href="" class="dmbutton2" ng-click='view.setColor("*")'></a></li>
-                <li><a href="" class="dmbutton2" title="red" style="background-color: red" ng-click='view.setColor("red")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: blue" ng-click='view.setColor("blue")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: green" ng-click='view.setColor("green")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: saddlebrown" ng-click='view.setColor("brown")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: #000000" ng-click='view.setColor("black")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: #ffff00" ng-click='view.setColor("yellow")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: pink" ng-click='view.setColor("pink")'></a></li>
-                <li><a href="" class="dmbutton2" style="background-color: white" ng-click='view.setColor("white")'></a></li>
+                <li><a href="" class="dmbutton2" title="all colors" ng-click='view.setColor("*")'></a></li>
+                <li ng-repeat="color in view.colors"><a href="" class="dmbutton2" title="{{color.toLowerCase()}}" style="background-color: {{color.toLowerCase()}}" ng-click='view.setColor(color)'></a></li>
+                <!--<li><a href="" class="dmbutton2" title="red" style="background-color: red" ng-click='view.setColor("red")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: blue" ng-click='view.setColor("blue")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: green" ng-click='view.setColor("green")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: saddlebrown" ng-click='view.setColor("brown")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: #000000" ng-click='view.setColor("black")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: #ffff00" ng-click='view.setColor("yellow")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: pink" ng-click='view.setColor("pink")'></a></li>-->
+                <!--<li><a href="" class="dmbutton2" style="background-color: white" ng-click='view.setColor("white")'></a></li>-->
             </ul>
         </nav>
 
@@ -41,7 +41,7 @@
                 <div class="portfolio-item col-md-3" style="margin-top: 20px"
                      dir-paginate="product in view.products | productsFilter:  {material: view.selectedMaterial, color: view.selectedColor} | itemsPerPage: 8">
                     <div class="he-wrap tpl6">
-                        <img src="assets/Theme/demos/portfolio_02.jpg" alt="">
+                        <img ng-src="{{view.link + 'images/' + product.image_links[0]}}" alt="">
                         <div class="he-view">
                             <div class="bg a0" data-animate="fadeIn">
                                 <h3 class="a1" data-animate="fadeInDown">{{product.name}}</h3>

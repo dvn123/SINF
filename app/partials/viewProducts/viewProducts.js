@@ -1,6 +1,6 @@
 'use strict';
 
-var link = 'partials/viewProducts/new_list.json';
+var link = 'http://127.0.0.1:49822/api/';
 
 angular.module('myApp.viewProducts', ['ngRoute'])
 
@@ -14,19 +14,6 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         });
     }])
 
-    /*.controller('viewProductsCtrl', ['$http', function($http) {
-     var view = this;
-     view.products = [ ];
-
-     $http.get(link).success(function(data) {
-     view.products = data.products;
-     }
-     );
-
-
-
-
-     }])*/
     .filter('productsFilter', function() {
         return function (items, params) {
             var filteredByMaterial = filter("material", params.material, items);
@@ -40,6 +27,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
     .controller('viewCategoryCtrl', ['$http', '$route', function($http, $route) {
         var view = this;
+        view.link = link;
         view.products = [ ];
         view.selectedMaterial = '*';
         view.selectedColor = '*';
@@ -70,26 +58,12 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         //console.log($route.current.params);
 
 
-        $http.get(link).success(function(data) {
+        $http.get(link + 'products/').success(function(data) {
                 view.products = data.products;
                 view.materials = getMaterials(data.products);
+                view.colors = getColors(data.products);
             }
         );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }]);
 
@@ -151,4 +125,19 @@ function getMaterials(products) {
     }
 
     return materials;
+}
+
+function getColors(items) {
+    var colors = [];
+
+    for(var i = 0; i < items.length; i++) {
+        var subproducts = items[i].subproducts;
+        for(var j = 0; j < subproducts.length; j++) {
+            if(colors.indexOf(subproducts[j].color) == -1) {
+                colors.push(subproducts[j].color);
+                break;
+            }
+        }
+    }
+    return colors;
 }
