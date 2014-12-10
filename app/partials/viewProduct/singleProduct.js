@@ -23,7 +23,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 //Set defaults
                 $scope.current[$scope.keys[i]] = data.product.subproducts[0][$scope.keys[i]];
 
-                if($scope.keys[i] != "stock") {
+                if($scope.keys[i] != "stock" && $scope.keys[i] != "id") {
                     $scope.select_options[$scope.keys[i]] = [];
                 }
             }
@@ -32,7 +32,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
             for(var i = 0; i < data.product.subproducts.length; i++) {
                 for(var key in data.product.subproducts[i]){
-                    if(key != "stock" && $scope.select_options[key].indexOf(data.product.subproducts[i][key]) == -1) {
+                    if(key != "stock" && key != "id" && $scope.select_options[key].indexOf(data.product.subproducts[i][key]) == -1) {
                         $scope.select_options[key].push(data.product.subproducts[i][key]);
                     }
                 }
@@ -87,23 +87,27 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
             $scope.current["stock"] =  $scope.filter["stock"][0]
+            $scope.current["id"] =  $scope.filter["id"][0]
         };
 
         $scope.updateStock = function(obj) {
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 var tmp = jQuery.extend(true, {}, $scope.product.subproducts[i]);
+                delete tmp['id'];
                 delete tmp['stock'];
 
                 var tmp2 = jQuery.extend(true, {}, $scope.current);
+                delete tmp2['id'];
                 delete tmp2['stock'];
                 console.log();
-                console.log(tmp);
-                console.log($scope.product.subproducts[i]["stock"]);
-                console.log(tmp2);
-                console.log(tmp == tmp2);
+                //console.log(tmp);
+                //console.log($scope.product.subproducts[i]["stock"]);
+                //console.log(tmp2);
+                //console.log(tmp == tmp2);
                 if(angular.equals(tmp, tmp2)) {
                     console.log("FOUND - Stock = " + $scope.product.subproducts[i]["stock"]);
                     $scope.current["stock"] = $scope.product.subproducts[i]["stock"];
+                    $scope.current["id"] = $scope.product.subproducts[i]["id"];
                 }
             }
         };
