@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>TECHBAGS</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -61,8 +61,8 @@
         <div class="site-header clearfix">
             <div class="col-lg-3 col-md-3 col-sm-12 title-area">
                 <div class="site-title" id="title">
-                    <a href="index.html" title="">
-                        <h4>MAX<span>FRONT</span></h4>
+                    <a href="#/home" title="">
+                        <h4>TECH<span>BAGS</span></h4>
                     </a>
                 </div>
             </div>
@@ -119,7 +119,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="number" minlength="9" maxlength="9" class="form-control input-sm" placeholder="Tax ID"
+                                    <input type="number" minlength="9" maxlength="9" class="form-control input-sm"
+                                           placeholder="Tax ID"
                                            ng-model="newuser.tax_id" required>
                                 </div>
 
@@ -134,12 +135,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-sm" size="4" maxlength="4" placeholder="Zip Code 1"
+                                    <input type="text" class="form-control input-sm" size="4" maxlength="4"
+                                           placeholder="Zip Code 1"
                                            ng-model="newuser.zip_code1">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-sm" size="3" maxlength="3" placeholder="Zip Code 2"
+                                    <input type="text" class="form-control input-sm" size="3" maxlength="3"
+                                           placeholder="Zip Code 2"
                                            ng-model="newuser.zip_code2">
                                 </div>
 
@@ -164,22 +167,39 @@
                 <div id="nav" class="right">
                     <div class="container clearfix">
                         <ul id="jetmenu" class="jetmenu blue">
-                            <li ng-show="!hasUser()"><a href="" ng-click="open(sm)">Login</a></li>
-                            <li ng-show="hasUser()"><a href="" ng-click="logout()">Logout</a></li>
-                            <li ng-show="hasUser()"><a href="#/history">History</a></li>
-                            <li ng-show="hasUser()"><a href="#/edituser">Edit User</a></li>
-                            <li class="active"><a href="#">Home</a>
+                            <!--<li ng-show="!hasUser()"><a href="" ng-click="open(sm)">Login</a></li>-->
+                            <!--<li ng-show="hasUser()"><a href="" ng-click="logout()">Logout</a></li>-->
+                            <!--<li ng-show="hasUser()"><a href="#/history">History</a></li>-->
+                            <!--<li ng-show="hasUser()"><a href="#/edituser">Edit User</a></li>-->
+                            <li class="active"><a href="#home">Home</a>
                             </li>
                             <li class="products"><a href="#/viewProducts/">Products</a>
                                 <ul class="dropdown">
-                                    <li><a href="#/viewProducts/backpacks">Backpacks</a></li>
-                                    <li><a href="#/viewProducts/handbags">Handbags</a></li>
-                                    <li><a href="#/viewProducts/hard-cases">Hard cases</a></li>
-                                    <li><a href="#/viewProducts/shoulder-bags">Shoulder bags</a></li>
-                                    <li><a href="#/viewProducts/sleeves">Sleeves</a></li>
-                                    <li><a href="#/viewProducts/totes">Totes</a></li>
+                                    <li><a href="#/viewProducts/backpack">Back Pack</a></li>
+                                    <li><a href="#/viewProducts/hardcase">Hard Case</a></li>
+                                    <li><a href="#/viewProducts/messenger">Messenger Bag</a></li>
+                                    <li><a href="#/viewProducts/shoulder">Shoulder Bag</a></li>
+                                    <li><a href="#/viewProducts/sleeve">Sleeve</a></li>
+                                    <li><a href="#/viewProducts/tole">Tole</a></li>
                                     <li><a href="#/viewProducts/wheeled">Wheeled</a></li>
                                 </ul>
+                            </li>
+                            <li class="faq"><a href="#/faq">FAQ</a>
+                            <li class="contact"><a href="#/contact">Contact us</a></li>
+
+                            <li class="pull-right" ng-show="!hasUser()"><a href="" ng-click="open(sm)">Login</a></li>
+                            <li class="pull-right" ng-show="hasUser()">
+                                <div style="margin-top: 7px">
+
+                                    <div class="row text-right">
+                                        Welcome {{user.name | TruncateWords: 1}}!
+                                    </div>
+                                    <div class="row text-right">
+                                        <a href="#/history">Account</a> |
+                                        <a href="" class="text-muted" ng-click="logout()">Logout</a>
+                                    </div>
+                                </div>
+
                             </li>
                             <li class="checkout pull-right">
                                 <a ng-href="#/checkout">
@@ -200,17 +220,17 @@
 <!-- end header -->
 
 
-<ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/">home</a></li>
-    <li><a href="#/viewProducts">viewProducts</a></li>
-    <li><a href="#/products/1">viewProduct</a></li>
-    <li><a href="#/history">History</a></li>
-    <li><a href="#/checkout">Checkout</a></li>
-    <li><a href="#/faq">FAQ</a></li>
-    <li><a href="#/contact">Contact</a></li>
-</ul>
-<div>Angular seed app: v<span app-version></span></div>
+<!--<ul class="menu">-->
+<!--<li><a href="#/view1">view1</a></li>-->
+<!--<li><a href="#/">home</a></li>-->
+<!--<li><a href="#/viewProducts">viewProducts</a></li>-->
+<!--<li><a href="#/products/1">viewProduct</a></li>-->
+<!--<li><a href="#/history">History</a></li>-->
+<!--<li><a href="#/checkout">Checkout</a></li>-->
+<!--<li><a href="#/faq">FAQ</a></li>-->
+<!--<li><a href="#/contact">Contact</a></li>-->
+<!--</ul>-->
+<!--<div>Angular seed app: v<span app-version></span></div>-->
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -230,7 +250,7 @@
         </div>
         <!-- end widget -->
         <div class="widget col-lg-3 col-md-3 col-sm-12">
-            <h4 class="title">Recent Posts</h4>
+            <h4 class="title">Recent Products</h4>
             <ul class="recent_posts">
                 <li>
                     <a href="home1.html#">
@@ -251,10 +271,10 @@
         <div class="widget col-lg-3 col-md-3 col-sm-12">
             <h4 class="title">Get In Touch</h4>
             <ul class="contact_details">
-                <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
+                <li><i class="fa fa-envelope-o"></i> info@techbags.com</li>
                 <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
-                <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
+                <li><i class="fa fa-home"></i> Some Fine Address, 887, Porto, Portugal.</li>
+                <li><a href="#/contact"><i class="fa fa-envelope"></i> Contact us</a></li>
             </ul>
             <!-- contact_details -->
         </div>
@@ -278,22 +298,22 @@
 
     <div class="copyrights">
         <div class="container">
-            <div class="col-lg-6 col-md-6 col-sm-12 columns">
-                <p>Copyright © 2014 - All rights reserved. Designed by <a title="Bootstrap Themes"
-                                                                          href="http://alvarez.is">Alvarez</a></p>
+            <div class="col-lg-6 col-md-6 col-sm-12 columns pull-right">
+
             </div>
+            <p class="pull-right">Copyright © 2014 - All rights reserved.</p>
             <!-- end widget -->
-            <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
-                <div class="footer-menu right">
-                    <ul class="menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Site Terms</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
+            <!--<div class="col-lg-6 col-md-6 col-sm-12 columns text-right">-->
+            <!--<div class="footer-menu right">-->
+            <!--<ul class="menu">-->
+            <!--<li><a href="#">Home</a></li>-->
+            <!--<li><a href="#">About</a></li>-->
+            <!--<li><a href="#">Sitemap</a></li>-->
+            <!--<li><a href="#">Site Terms</a></li>-->
+            <!--<li><a href="#">Contact</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
             <!-- end large-6 -->
         </div>
         <!-- end container -->
@@ -358,6 +378,7 @@
             lazyLoad: true,
             navigation: false
         });
+        $('#jetmenu .checkout a').css("border-top", $('body').css("background-color"));
     });
 </script>
 <style>
