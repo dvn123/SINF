@@ -18,8 +18,8 @@
 
         <nav class="portfolio-filter" style="margin-top: -25px">
                 <!--TODO: change to circles -->
-                <li><a href="" class="dmbutton2" ng-show="view.products.length > 0" title="all colors" ng-click='view.setColor("*")'></a></li>
-                <li ng-repeat="color in view.colors"><a href="" class="dmbutton2" title="{{color.toLowerCase()}}" style="background-color: {{color.toLowerCase()}}" ng-click='view.setColor(color)'></a></li>
+                <li><a style="border-radius: 50%; width: 25px; height: 25px; padding: 0px;" href="" class="dmbutton2" ng-show="view.products.length > 0" title="all colors" ng-click='view.setColor("*")'></a></li>
+                <li ng-repeat="color in view.colors"><a href="" class="dmbutton2" title="{{color.toLowerCase()}}" style="background-color: {{color.toLowerCase()}}; border-radius: 50%; width: 25px; height: 25px; padding: 0px;" ng-click='view.setColor(color)'></a></li>
             </ul>
         </nav>
 
