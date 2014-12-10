@@ -1,6 +1,6 @@
 'use strict';
 
-var link = 'partials/viewProducts/list.json';
+var link = 'partials/viewProducts/new_list.json';
 
 angular.module('myApp.viewProducts', ['ngRoute'])
 
@@ -68,7 +68,8 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
         $http.get(link).success(function(data) {
                 view.products = data.products;
-                view.materials = getMaterials(view.data.products);
+                view.materials = getMaterials(data.products);
+                console.log(view.materials);
             }
         );
 
@@ -140,5 +141,14 @@ function filterByColor(items, color) {
 }
 
 function getMaterials(products) {
-    
+    var materials = [];
+
+
+    for(var i in products) {
+        console.log(products);
+        //if (!(products[i].material in materials))
+            materials.push(products[i].material);
+    }
+
+    return materials;
 }
