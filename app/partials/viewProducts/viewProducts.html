@@ -3,9 +3,12 @@
 
         <div class="divider"></div>
 
+        <div class="text-center" ng-hide="view.products.length > 0">
+            <i class="rotating fa fa-spinner fa-4x"></i>
+        </div>
         <nav class="portfolio-filter clearfix" >
             <ul>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("*")'>All</a></li>
+                <li><a href="" class="dmbutton2" ng-show="view.products.length > 0" ng-click='view.setMaterial("*")'>All</a></li>
                 <li ng-repeat="material in view.materials"><a href="" class="dmbutton2" ng-click='view.setMaterial(material)'>{{material}}</a>
                 <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("*")'>All</a></li>-->
                 <!--<li><a href="" class="dmbutton2" ng-click='view.setMaterial("canvas")'>Canvas</a></li>-->
@@ -20,7 +23,7 @@
 
         <nav class="portfolio-filter" style="margin-top: -25px">
                 <!--TODO: change to circles -->
-                <li><a href="" class="dmbutton2" title="all colors" ng-click='view.setColor("*")'></a></li>
+                <li><a href="" class="dmbutton2" ng-show="view.products.length > 0" title="all colors" ng-click='view.setColor("*")'></a></li>
                 <li ng-repeat="color in view.colors"><a href="" class="dmbutton2" title="{{color.toLowerCase()}}" style="background-color: {{color.toLowerCase()}}" ng-click='view.setColor(color)'></a></li>
                 <!--<li><a href="" class="dmbutton2" title="red" style="background-color: red" ng-click='view.setColor("red")'></a></li>-->
                 <!--<li><a href="" class="dmbutton2" style="background-color: blue" ng-click='view.setColor("blue")'></a></li>-->
@@ -32,6 +35,7 @@
                 <!--<li><a href="" class="dmbutton2" style="background-color: white" ng-click='view.setColor("white")'></a></li>-->
             </ul>
         </nav>
+
 
 
 
