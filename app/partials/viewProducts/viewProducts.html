@@ -7,10 +7,10 @@
             <ul>
                 <li><a href="" class="dmbutton2" ng-click='view.setMaterial("*")'>All</a></li>
                 <li><a href="" class="dmbutton2" ng-click='view.setMaterial("canvas")'>Canvas</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("fabric")'>Fabric</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("Fabric")'>Fabric</a></li>
                 <li><a href="" class="dmbutton2" ng-click='view.setMaterial("faux fur")'>Faux fur</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("hard plastic")'>Hard plastic</a></li>
-                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("leather")'>Leather</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("ard plastic")'>Hard plastic</a></li>
+                <li><a href="" class="dmbutton2" ng-click='view.setMaterial("Leather")'>Leather</a></li>
                 <li><a href="" class="dmbutton2" ng-click='view.setMaterial("neoprene")'>Neoprene</a></li>
                 <li><a href="" class="dmbutton2" ng-click='view.setMaterial("nylon")'>Nylon</a></li>
             </ul>
@@ -37,7 +37,7 @@
             <div class="recentitems portfolio container">
 
                 <div class="portfolio-item col-md-3" style="margin-top: 20px"
-                     dir-paginate="product in view.products | productsFilter:  {material: view.material, color: view.color} | itemsPerPage: 8">
+                     dir-paginate="product in view.products | productsFilter:  {material: view.selectedMaterial, color: view.selectedColor} | itemsPerPage: 8">
                     <div class="he-wrap tpl6">
                         <img src="assets/Theme/demos/portfolio_02.jpg" alt="">
                         <div class="he-view">

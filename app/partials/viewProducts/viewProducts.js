@@ -1,56 +1,88 @@
 'use strict';
 
+var link = 'partials/viewProducts/list.json';
+
 angular.module('myApp.viewProducts', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/viewProducts', {
             templateUrl: 'partials/viewProducts/viewProducts.html',
-            controller: 'viewProductsCtrl'
+            controller: 'viewCategoryCtrl'
         }).when('/viewProducts/:category', {
             templateUrl: 'partials/viewProducts/viewProducts.html',
             controller: 'viewCategoryCtrl'
         });
     }])
 
-    .controller('viewProductsCtrl', ['$http', function($http) {
-        var view = this;
-        view.products = [ ];
+    /*.controller('viewProductsCtrl', ['$http', function($http) {
+     var view = this;
+     view.products = [ ];
 
-        $http.get('partials/viewProducts/list.JSON').success(function(data) {
-                view.products = data.products;
-            }
-        );
-
-
+     $http.get(link).success(function(data) {
+     view.products = data.products;
+     }
+     );
 
 
-    }])
+
+
+     }])*/
     .filter('productsFilter', function() {
         return function (items, params) {
             var material = filter("material", params.material, items);
             return filter("colors", params.color, material);
+            //return filterByColor(selectedMaterial, params.selectedColor);
         }
     })
 
     .controller('viewCategoryCtrl', ['$http', '$route', function($http, $route) {
         var view = this;
         view.products = [ ];
-        view.material = '*';
-        view.color = '*';
-
-        console.log($route.current.params);
-        $http.get('partials/viewProducts/list.JSON').success(function(data) {
-                view.products = data.products;
-            }
-        );
+        view.selectedMaterial = '*';
+        view.selectedColor = '*';
+        view.materials = [ ];
 
         view.setMaterial = function(material) {
-            view.material = material;
+            view.selectedMaterial = material;
         };
 
         view.setColor = function(color) {
-            view.color = color;
+            view.selectedColor = color;
         };
+
+        view.getColor = function() {
+            return view.selectedColor;
+        }
+
+        view.getMaterial = function() {
+            return view.selectedMaterial;
+        }
+
+
+        if ($route.current.params.category)
+            console.log("has category")
+        else
+            console.log("hasn't category");
+        //console.log($route.current.params);
+
+
+        $http.get(link).success(function(data) {
+                view.products = data.products;
+                view.materials = getMaterials(view.data.products);
+            }
+        );
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -89,4 +121,24 @@ function filter(field, filter, items) {
     };
 
     return newItems;
+}
+
+function filterByColor(items, color) {
+    var newItems = [];
+
+    for(var i = 0; i < items.length; i++) {
+        var subproducts = items[i].subproducts;
+        for(var j = 0; j < subproducts.length; j++) {
+            if(subproducts[j].selectedColor.toUpperCase === color.toUpperCase) {
+                console.log(subproducts[j]);
+                newItems.push(items[i]);
+                break;
+            }
+        }
+    }
+    return newItems;
+}
+
+function getMaterials(products) {
+    
 }
