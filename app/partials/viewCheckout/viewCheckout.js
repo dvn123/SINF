@@ -1,5 +1,5 @@
 'use strict';
-
+var link = 'http://127.0.0.1:49822/api/';
 
 
 angular.module('myApp.viewCheckout', ['ngRoute'])
@@ -31,6 +31,12 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
             console.log("***************");
 
             console.log(JSON.stringify(order));
+
+            $http.post(link + 'orders', order).success(function(data) {
+
+
+                console.log("-->" + data + "<--");
+            });
 
             //ngCart.empty(true);
         };
