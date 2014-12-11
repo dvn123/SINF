@@ -12,11 +12,14 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
     .controller('viewProductCtrl', ['$http', '$scope', '$routeParams' ,function($http, $scope, $routeParams) {
 
-        $http.get('partials/viewProduct/1.json').success(function(data) {
+        $http.get('http://127.0.0.1:49822/api/products/' + $routeParams['productID']).success(function(data) {
             $scope.product = data.product;
             $scope.current = {};
 
             $scope.select_options = {};
+            $scope.selected_image = $scope.product.image_links[0];
+
+            $scope.image_n = $scope.product.image_links.length % 4;
 
             $scope.keys = Object.keys(data.product.subproducts[0]);
             for(var i = 0; i < $scope.keys.length; i++) {
@@ -37,15 +40,16 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                     }
                 }
             }
-            console.log($scope.select_options);
+
 
             $scope.select_options_full = $scope.select_options;
+            console.log("Select Options:");
+            console.log($scope.select_options_full);
             $scope.filter = {};
             $scope.filter_update($scope.master_select);
         });
 
         $scope.updateSelected = function(obj) {
-            console.log("Key: " + obj);
             if(obj !=  $scope.master_select) {
                 $scope.updateStock(obj);
                 return;
@@ -69,7 +73,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 if ($scope.current[obj] == $scope.product.subproducts[i][obj]) {
                     selected_object = $scope.product.subproducts[i];
-                    console.log(selected_object);
+                    //console.log(selected_object);
                     for (var key in selected_object) {
                         //console.log(key);
                         if(key != $scope.master_select && $scope.filter[key].indexOf(selected_object[key]) == -1)
@@ -78,7 +82,8 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
 
-            console.log(JSON.stringify($scope.filter));
+            console.log("Filter:");
+            console.log($scope.filter);
 
             for(key in $scope.select_options) {
                 if(key != obj) {
@@ -86,8 +91,10 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                     $scope.current[key] = $scope.filter[key][0];
                 }
             }
-            $scope.current["stock"] =  $scope.filter["stock"][0]
-            $scope.current["id"] =  $scope.filter["id"][0]
+            $scope.current["stock"] =  $scope.filter["stock"][0];
+            $scope.current["id"] =  $scope.filter["id"][0];
+            console.log("Current:");
+            console.log($scope.current);
         };
 
         $scope.updateStock = function(obj) {
@@ -99,16 +106,24 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 var tmp2 = jQuery.extend(true, {}, $scope.current);
                 delete tmp2['id'];
                 delete tmp2['stock'];
-                console.log();
                 //console.log(tmp);
                 //console.log($scope.product.subproducts[i]["stock"]);
                 //console.log(tmp2);
                 //console.log(tmp == tmp2);
                 if(angular.equals(tmp, tmp2)) {
-                    console.log("FOUND - Stock = " + $scope.product.subproducts[i]["stock"]);
+                    //console.log("FOUND - Stock = " + $scope.product.subproducts[i]["stock"]);
                     $scope.current["stock"] = $scope.product.subproducts[i]["stock"];
                     $scope.current["id"] = $scope.product.subproducts[i]["id"];
                 }
+            }
+            console.log("Current: ");
+            console.log($scope.current);
+        };
+
+        $scope.updateImage = function(obj) {
+            if(obj < $scope.product.image_links.length) {
+                $scope.selected_image = $scope.product.image_links[obj];
+                $('body').scrollTo('.item_image');
             }
         };
     }]);
