@@ -4,7 +4,7 @@
 
             <ngcart-cart></ngcart-cart>
 
-            <div class="alert alert-dismissable alert-danger" ng-controller="CartController as xController">
+            <div class="alert alert-dismissable alert-danger" ng-controller="CartController">
                 {{ngCart.getItems()}}
             </div>
 
@@ -83,7 +83,7 @@
 
             <h5 class="title">BILLING INFORMATION</h5>
 
-            <form id="billinginfo" action="" name="billinginfo" method="post">
+            <form id="billinginfo" name="billinginfo" method="post" ng-controller="viewCheckout as viewCheckoutCtrl">
                 <label for="baddress">Billing Address 1</label>
                 <input type="text" name="baddress" id="baddress" class="form-control" placeholder="Address line 1">
                 <label for="baddress1">Billing Address 2 (Optional)</label>
@@ -127,7 +127,7 @@
                 <br><br>
                 <!--<div class="well"><strong>PURCHASE TOTAL:</strong> $18.00</div>-->
                 <br>
-                <button class="button large btn-block">PURCHASE</button>
+                <button class="button large btn-block" ng-click="viewCheckoutCtrl.submitOrder(ngCart)">PURCHASE</button>
             </form>
 
         </div><!-- end content -->
