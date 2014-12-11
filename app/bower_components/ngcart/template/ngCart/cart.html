@@ -42,13 +42,22 @@
         <tbody>
         <tr ng-repeat="item in ngCart.getCart().items track by $index">
             <td><span ng-click="ngCart.removeItem($index)" class="glyphicon glyphicon-remove"></span></td>
-            <td>{{ item.getName() }}</td>
-            <td><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
+            <td>
+                <div class="row">
+                    <a ng-href="#/products/{{item.getData().mainId}}">{{ item.getName() }}</a>
+                </div>
+                <div class="row">
+                    <small>
+                        {{item.getData().size.toLowerCase()}}" {{item.getData().color.toLowerCase()}}
+                    </small>
+                </div>
+            </td>
+            <td style="vertical-align: middle;"><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
                       ng-click="item.setQuantity(-1, true)"></span>&nbsp;&nbsp;
                 {{ item.getQuantity() | number }}&nbsp;&nbsp;
                 <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
-            <td>{{ item.getPrice() | currency}}</td>
-            <td>{{ item.getTotal() | currency }}</td>
+            <td style="vertical-align: middle;">{{ item.getPrice() | currency}}</td>
+            <td style="vertical-align: middle;">{{ item.getTotal() | currency }}</td>
         </tr>
         </tbody>
     </table>
