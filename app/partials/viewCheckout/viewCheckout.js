@@ -32,6 +32,7 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
 
             console.log(JSON.stringify(order));
 
+            /// $http.jsonp(link + 'orders?callback=' + order).success(function(data) {
             $http.post(link + 'orders', order).success(function(data) {
 
 
