@@ -12,6 +12,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
     .controller('viewProductCtrl', ['$http', '$scope', '$routeParams' ,function($http, $scope, $routeParams) {
 
+        //$http.get('partials/viewProduct/1.json').success(function(data) {
         $http.get('http://127.0.0.1:49822/api/products/' + $routeParams['productID']).success(function(data) {
             $scope.product = data.product;
             $scope.current = {};
@@ -103,16 +104,19 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 var tmp = jQuery.extend(true, {}, $scope.product.subproducts[i]);
                 delete tmp['id'];
                 delete tmp['stock'];
+                delete tmp['mainId'];
 
                 var tmp2 = jQuery.extend(true, {}, $scope.current);
                 delete tmp2['id'];
                 delete tmp2['stock'];
+                delete tmp2['mainId'];
+
                 //console.log(tmp);
                 //console.log($scope.product.subproducts[i]["stock"]);
                 //console.log(tmp2);
                 //console.log(tmp == tmp2);
                 if(angular.equals(tmp, tmp2)) {
-                    //console.log("FOUND - Stock = " + $scope.product.subproducts[i]["stock"]);
+                    //console.log("FOUND - Stock = " + $scope.product.subproducts[i]["id"]);
                     $scope.current["stock"] = $scope.product.subproducts[i]["stock"];
                     $scope.current["id"] = $scope.product.subproducts[i]["id"];
                 }

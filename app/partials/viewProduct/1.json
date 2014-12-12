@@ -1,15 +1,13 @@
-{
-  "product":
-  {"id":"A001",
-   "name":"Cocoon Slim Backpack",
-   "category":"BACKPACK",
-   "brand":"COCOON",
-   "price":79.95,
-   "material":"Fabric",
-   "description":"Only 3.5-inches deep when fully packed, Cocoon's SLIM backpack cradles your MacBook Pro, iPad, and documents in luxurious interior pockets. Thanks to water-resistant ballistic nylon construction and waterproof zippers, SLIM keeps everything inside safe and dry. Its adjustable shoulder straps, minimalist design, and gunmetal hardware also provide loads of comfort and style. And the unique full-size GRID-IT! pocket lets you securely store items vertically, so you can say farewell to a messy bag.",
-   "subproducts":[{"color":"BLACK","size":"15", "stock":10, "id":"AID.BLACK.15"}, {"color":"BLACK","size":"13","stock":9, "id":"AID.BLACK.13"}, {"color":"RED","size":"13", "stock":5, "id":"AID.RED.13"}],
-   "image_links":["{A8A8FC5A-76F6-11E4-8591-080027980C81}",
-                  "{DDE20922-76F6-11E4-8591-080027980C81}",
-                  "{D5F64752-76F6-11E4-8591-080027980C81}"],
-   "specs_link":null}
-}
+{"product":
+{"id":"A003",
+    "name":"Thule 13\" Stravan Sleeve",
+    "category":"SLEEVE",
+    "brand":"THULE",
+    "price":49.95,
+    "material":"Fabric",
+    "description":"The Thule Stravan Sleeve wraps your MacBook Pro, MacBook Pro with Retina display, or MacBook Air in densely padded, water-resistant protection.",
+    "subproducts":[{"color":"GRAY","size":"11","stock":5,"id":"A003.GRAY.11"},
+                   {"color":"GRAY","size":"13","stock":6,"id":"A003.GRAY.13"},
+                   {"color":"GRAY","size":"15","stock":5,"id":"A003.GRAY.15"}],
+    "image_links":["{71BD4F27-76FA-11E4-8591-080027980C81}","{7A7EAF79-76FA-11E4-8591-080027980C81}","{85A62BAD-76FA-11E4-8591-080027980C81}"],
+    "specs_link":null}}
