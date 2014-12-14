@@ -12,8 +12,8 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
     .controller('viewProductCtrl', ['$http', '$scope', '$routeParams' ,function($http, $scope, $routeParams) {
 
-        //$http.get('partials/viewProduct/1.json').success(function(data) {
-        $http.get('http://127.0.0.1:49822/api/products/' + $routeParams['productID']).success(function(data) {
+        $http.get('partials/viewProduct/1.json').success(function(data) {
+        //$http.get('http://127.0.0.1:49822/api/products/' + $routeParams['productID']).success(function(data) {
             $scope.product = data.product;
             $scope.current = {};
             $scope.current.mainId = $scope.product.id;
