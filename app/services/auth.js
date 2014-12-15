@@ -79,6 +79,8 @@ angular.module('myApp')
                  success();
                  }).error(error);
                  */
+            }, hasUser: function () {
+                return typeof user.email !== 'undefined';
             }
         };
     });
