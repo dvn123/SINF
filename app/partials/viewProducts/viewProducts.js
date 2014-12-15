@@ -69,7 +69,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
             if(category === "BACKPACK" || category === "HARDCASE"
                 || category === "MESSENGER" || category === "SHOULDER"
-                || category === "SLEEVE" || category === "TOLE"
+                || category === "SLEEVE" || category === "TOTE"
                 || category === "WHEELED")
                 categoryFinal = "bycategory/" + category;
 
