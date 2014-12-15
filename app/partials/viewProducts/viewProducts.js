@@ -87,7 +87,7 @@ angular.module('myApp.viewProducts', ['ngRoute'])
                 view.colors = getColors(data.products);
                 view.sizes = getSizes(data.products).sort();
 
-                console.log(view.sizes);
+                console.log("...");
 
                 if (data.products.length === 0) {
                     view.categoryHasResults = false;

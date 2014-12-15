@@ -27,7 +27,7 @@
                 <br>
                 <div  ng-hide="checkout.ngCart.totalItems() === 0">
 
-                    <form  ng-show="checkout.hasUser" id="cartinfo" action="" name="cartinfo" method="post">
+                    <form  ng-show="checkout.hasUser" id="cartinfo" action="" name="checkoutForm" method="post">
 
 
                         <h5 class="title">CART DETAILS</h5>
@@ -115,7 +115,8 @@
                         <br><br>
                         <!--<div class="well"><strong>PURCHASE TOTAL:</strong> $18.00</div>-->
                         <br>
-                        <button class="button large btn-block" ng-click="checkout.submitOrder()">PURCHASE</button>
+                        <button  ng-click="checkout.submitOrder()">PURCHASE</button>
+                        <!--<input class="button large btn-block" type="submit" value="PURCHASE" />-->
                     </form>
                 </div>
 
