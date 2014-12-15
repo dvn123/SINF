@@ -16,9 +16,9 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
     .filter('productsFilter', function() {
         return function (items, params) {
-            var filteredByMaterial = filter("material", params.material, items);
+            var filteredBySize = filterBySize(items, params.size);//filter("material", params.material, items);
 
-            return filterByColor(filteredByMaterial, params.color);
+            return filterByColor(filteredBySize, params.color);
             //var material = filter("material", params.material, items);
             //return filter("colors", params.color, material);
             //return filterByColor(selectedMaterial, params.selectedColor);
@@ -31,7 +31,9 @@ angular.module('myApp.viewProducts', ['ngRoute'])
         view.products = [ ];
         view.selectedMaterial = '*';
         view.selectedColor = '*';
+        view.selectedSize = '*';
         view.materials = [ ];
+        view.sizes = [ ];
         view.categoryHasResults = true;
 
         view.setMaterial = function(material) {
@@ -51,6 +53,13 @@ angular.module('myApp.viewProducts', ['ngRoute'])
             return view.selectedMaterial;
         }
 
+        view.setSize = function(size) {
+            view.selectedSize = size;
+        };
+
+        view.getSize = function() {
+            return view.selectedSize;
+        }
         var category = $route.current.params.category;
         var categoryFinal = "";
 
@@ -73,10 +82,12 @@ angular.module('myApp.viewProducts', ['ngRoute'])
 
         $http.get(link + 'products/' + categoryFinal).success(function(data) {
                 view.categoryHasResults = true;
-                console.log("success: " + JSON.stringify(data));
                 view.products = data.products;
                 view.materials = getMaterials(data.products);
                 view.colors = getColors(data.products);
+                view.sizes = getSizes(data.products).sort();
+
+                console.log(view.sizes);
 
                 if (data.products.length === 0) {
                     view.categoryHasResults = false;
@@ -133,6 +144,25 @@ function filterByColor(items, color) {
     return newItems;
 }
 
+function filterBySize(items, size) {
+
+    if (size === "*")
+        return items;
+
+    var newItems = [];
+
+    for(var i = 0; i < items.length; i++) {
+        var subproducts = items[i].subproducts;
+        for(var j = 0; j < subproducts.length; j++) {
+            if(subproducts[j].size === size) {
+                newItems.push(items[i]);
+                break;
+            }
+        }
+    }
+    return newItems;
+}
+
 function getMaterials(products) {
     var materials = [];
 
@@ -159,4 +189,19 @@ function getColors(items) {
         }
     }
     return colors;
+}
+
+function getSizes(items) {
+    var sizes = [];
+
+    for(var i = 0; i < items.length; i++) {
+        var subproducts = items[i].subproducts;
+        for(var j = 0; j < subproducts.length; j++) {
+            if(sizes.indexOf(subproducts[j].size) == -1) {
+                sizes.push(subproducts[j].size);
+                break;
+            }
+        }
+    }
+    return sizes;
 }
