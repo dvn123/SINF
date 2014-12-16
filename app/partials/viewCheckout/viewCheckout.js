@@ -13,13 +13,25 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
     .controller('viewCheckout', ['$http', '$scope', '$routeParams', 'ngCart', 'Auth', function($http, $scope, $routeParams, ngCart, Auth) {
         var view = this;
         var order = {};
-        order.customer = "C001";
+        order.customer = Auth.getCurrentUser().id;
         order.lines = [];
         view.hasUser = Auth.hasUser();
         view.isEmpty = ngCart.getItems().length === 0;
 
         view.checkingOut = false;
         view.ngCart = ngCart;
+        view.customer = Auth.getCurrentUser();
+
+        view.newAddress = false;
+
+        view.setNewAddress = function (x) {
+          view.newAddress = x;
+        };
+
+        view.isNewAddress = function () {
+            return view.newAddress;
+        };
+
 
         //order.lines.push({"product_id": "A001","quantity":2});
         view.submitOrder = function() {

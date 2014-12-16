@@ -63,44 +63,27 @@
                             <option>18</option>
                             <option>19</option>
                         </select>
-                        <!--
-                                    <div class="clearfix"></div>
-                                    <div class="divider"></div>
 
-                                    <h5 class="title">BILLING INFORMATION</h5>
+                        <!--<div class="clearfix"></div>-->
+                        <div class="divider"></div>
+                        <a href="" class="dmbutton2" ng-hide="checkout.isNewAddress()" ng-click='checkout.setNewAddress(true)'>Send to another address</a>
+                        <a href="" class="dmbutton2" ng-show="checkout.isNewAddress()" ng-click='checkout.setNewAddress(false)'>Send to saved address</a>
+                        <div class="address" ng-show="checkout.isNewAddress()">
+                            <h5 class="title">DELIVERY INFORMATION</h5>
 
-                                    <form id="billinginfo" name="billinginfo" method="post" ng-controller="viewCheckout as viewCheckoutCtrl">
-                                        <label for="baddress">Billing Address 1</label>
-                                        <input type="text" name="baddress" id="baddress" class="form-control" placeholder="Address line 1">
-                                        <label for="baddress1">Billing Address 2 (Optional)</label>
-                                        <input type="text" name="baddress1" id="baddress1" class="form-control" placeholder="Address line 2">
-                                        <label for="bcity">Billing City</label>
-                                        <input type="text" name="bcity" id="bcity" class="form-control" placeholder="Your city">
-                                        <label for="bzip">Zip / Postal Code </label>
-                                        <input type="text" name="bzip" id="bzip" class="form-control" placeholder="Your ZIP or postal code">
 
-                                        <div class="clearfix"></div>
+                            <label for="baddress">Delivery Address</label>
+                            <input type="text" name="baddress" id="baddress" class="form-control" placeholder="Address line 1">
+                            <label for="bcity">Delivery City</label>
+                            <input type="text" name="bcity" id="bcity" class="form-control" placeholder="Your city">
+                            <label for="bzip">Zip 1 </label>
+                            <input type="text" name="bzip" id="bzip" class="form-control" placeholder="Your ZIP1 or postal code">
+                            <label for="bzip">Zip 2 </label>
+                            <input type="text" name="bzip" id="bzip1" class="form-control" placeholder="Your ZIP2 or postal code">
 
-                                        <select class="form-control">
-                                            <option>United States</option>
-                                            <option>Spain</option>
-                                            <option>United Kingdom</option>
-                                            <option>France</option>
-                                            <option>Japan</option>
-                                            <option>Brazil</option>
-                                            <option>Other Country</option>
-                                        </select>
-                                        <select class="form-control">
-                                            <option>Alabama</option>
-                                            <option>Other City</option>
-                                            <option>Other City</option>
-                                            <option>Other City</option>
-                                            <option>Other City</option>
-                                            <option>Other City</option>
-                                            <option>Other City</option>
-                                            <option>Other City</option>
-                                        </select>
-                                        <br> -->
+                            <br>
+
+                        </div>
                         <div class="clearfix"></div><br>
                         <div class="clearfix"></div>
                         <a href="" class="button">SHOW TERMS</a>
