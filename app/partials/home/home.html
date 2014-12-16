@@ -22,7 +22,7 @@
 </section><!-- end section3 -->
 
 <section class="section1" ng-controller="HomeCtrl as home ">
-    <div class="container clearfix">
+    <div class="container clearfix" ng-hide="home.hots.length === 0">
         <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
 
             <div class="general-title text-center">
@@ -55,7 +55,7 @@
         </div><!-- end content -->
     </div><!-- end container -->
 
-    <div class="container clearfix" style="margin-top: -100px">
+    <div class="container clearfix" style="margin-top: -100px"  ng-hide="home.monos.length === 0">
         <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
 
             <div class="general-title text-center">
