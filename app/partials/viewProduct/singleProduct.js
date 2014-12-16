@@ -23,14 +23,14 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
             $scope.keys = Object.keys($scope.product.subproducts[0]);
             for(var i = 0; i < $scope.keys.length; i++) {
-                if($scope.keys[i] != "stock" && $scope.keys[i] != "id")
+                if($scope.keys[i] != "stock" && $scope.keys[i] != "id" && $scope.keys[i] != "stock_shops")
                     $scope.keys[i] = capitaliseFirstLetter($scope.keys[i]);
             }
             $scope.master_select = $scope.keys[0];
 
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 for(var key in $scope.product.subproducts[i]){
-                    if(key != "stock" && key != "id") {
+                    if(key != "stock" && key != "id" && key != "stock_shops") {
                         $scope.product.subproducts[i][capitaliseFirstLetter(key)] = $scope.product.subproducts[i][key];
                         delete $scope.product.subproducts[i][key];
                     }
@@ -48,7 +48,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 //Set defaults
                 $scope.current[$scope.keys[i]] = $scope.product.subproducts[0][$scope.keys[i]];
 
-                if($scope.keys[i] != "stock" && $scope.keys[i] != "id") {
+                if($scope.keys[i] != "stock" && $scope.keys[i] != "id" && $scope.keys[i] != "stock_shops") {
                     $scope.select_options[$scope.keys[i]] = [];
                 }
             }
@@ -58,7 +58,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 for(var key in $scope.product.subproducts[i]){
-                    if(key != "stock" && key != "id" && $scope.select_options[key].indexOf(data.product.subproducts[i][key]) == -1) {
+                    if(key != "stock" && key != "id" && key != "stock_shops" && $scope.select_options[key].indexOf(data.product.subproducts[i][key]) == -1) {
                         $scope.select_options[key].push(data.product.subproducts[i][key]);
                     }
                 }
@@ -71,6 +71,14 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             $scope.filter = {};
             $scope.filter_update($scope.master_select);
         });
+
+        $scope.buildStockString = function(stock_shops) {
+            var string = "";
+            for(var i = 0; i < stock_shops.length; i++) {
+                string += stock_shops[i] + "<br>";
+            }
+            $scope.stockString =  string;
+        };
 
         $scope.updateSelected = function(obj) {
             if(obj !=  $scope.master_select) {
@@ -116,8 +124,11 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             }
             $scope.current["stock"] =  $scope.filter["stock"][0];
             $scope.current["id"] =  $scope.filter["id"][0];
+            $scope.current["stock_shops"] =  $scope.filter["stock_shops"][0];
             console.log("Current:");
             console.log($scope.current);
+
+            $scope.buildStockString($scope.current["stock_shops"]);
         };
 
         $scope.updateStock = function(obj) {
@@ -126,11 +137,13 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 delete tmp['id'];
                 delete tmp['stock'];
                 delete tmp['mainId'];
+                delete tmp['stock_shops'];
 
                 var tmp2 = jQuery.extend(true, {}, $scope.current);
                 delete tmp2['id'];
                 delete tmp2['stock'];
                 delete tmp2['mainId'];
+                delete tmp2['stock_shops'];
 
                 //console.log(tmp);
                 //console.log($scope.product.subproducts[i]["stock"]);
@@ -140,6 +153,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                     //console.log("FOUND - Stock = " + $scope.product.subproducts[i]["id"]);
                     $scope.current["stock"] = $scope.product.subproducts[i]["stock"];
                     $scope.current["id"] = $scope.product.subproducts[i]["id"];
+                    $scope.current["stock_shops"] = $scope.product.subproducts[i]["stock_shops"];
                 }
             }
             console.log("Current: ");
