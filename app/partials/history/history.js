@@ -1,5 +1,7 @@
 'use strict';
 
+var link = 'http://127.0.0.1:49822/api';
+
 angular.module('myApp.history', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
@@ -8,22 +10,27 @@ angular.module('myApp.history', ['ngRoute'])
                 templateUrl: 'partials/history/history.html'
             })
     }])
-    .controller('historyCtrl', function ($http, $log, $scope, Auth, $location) {
+    .controller('historyCtrl', function ($http, $log, $scope, Auth, $location, $route) {
         $scope.orders = [];
 
         $scope.goToEdit = function() {
           $location.path('edituser');
         };
 
-        //http.get('/orders/?Customer=' + Auth.getCurrentUser().id)
-        $http.get('partials/history/history.json').success(function (res) {
-            $log.log("Novas orders: ");
-            $log.log(res);
+        //$http.get(link + '/orders/?Customer=' + Auth.getCurrentUser().id)
+        //$http.get('partials/history/history.json')
+        $scope.refreshOrders = function() {
+            $http.get(link + '/orders/?Customer=' + Auth.getCurrentUser().id).success(function (res) {
+                $log.log("Novas orders: ");
+                $log.log(res);
 
-            //$log.log('/orders/?Customer=' + Auth.getCurrentUser().id);
+                $scope.orders = res['orders'];
+            }).error(function (error) {
+                $log.error(error);
+            });
+        };
 
-            $scope.orders = res;
-        }).error(function (error) {
-            $log.error(error);
+        $scope.$on('$routeChangeSuccess', function() {
+            $scope.refreshOrders();
         });
     });

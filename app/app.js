@@ -45,8 +45,9 @@ angular.module('myApp', [
                 size: size
             });
 
-            modalInstance.result.then(function (user) {
-                $scope.user = user;
+            modalInstance.result.then(function () {
+                $scope.user = Auth.getCurrentUser();
+                //$scope.user = user;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -54,20 +55,14 @@ angular.module('myApp', [
 
         $scope.user = Auth.getCurrentUser();
 
-        $scope.hasUser = function () {
-            return typeof $scope.user.email !== 'undefined';
+        $scope.hasUser = function() {
+            return Auth.hasUser();
         };
 
-        $scope.logout = function () {
-            Auth.logout(function (data) {
-                    $log.info("Logout success: " + data);
-                    $scope.user = {};
-                },
-                function (error) {
-                    $log.error("Logout error: " + error);
-                    $scope.errorMessage = error.message;
-                });
-        }
+        $scope.logout = function() {
+            Auth.logout();
+            $scope.user = Auth.getCurrentUser();
+        };
     })
     .controller('loginModalController', function ($scope, $modalInstance, $http, $log, Auth) {
         $scope.errorMessage = "";
@@ -98,17 +93,26 @@ angular.module('myApp', [
             if ($scope.activeForm === "login")
                 Auth.login($scope.newuser,
                     function (data) {
-                        $modalInstance.close(data);
+                        $log.log("Resposta do login: ");
+                        $log.log(data);
+
+                        $modalInstance.close();
                     },
                     function (error) {
-                        $scope.errorMessage = error.message;
+                        $log.log(error);
+                        $scope.errorMessage = 'Wrong data';
+                        //$scope.errorMessage = error.message;
                     });
             else
                 Auth.register($scope.newuser,
                     function (data) {
-                        $modalInstance.close(data);
+                        $log.log("Resposta do register: ");
+                        $log.log(data);
+
+                        $modalInstance.close();
                     },
                     function (error) {
+                        $log.log(error);
                         $scope.errorMessage = error.message;
                     });
         };

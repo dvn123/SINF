@@ -5,7 +5,7 @@ angular.module('myApp.editUser', ['ngRoute'])
         $routeProvider
             .when('/edituser', {
                 controller: 'editUserCtrl',
-                templateUrl: 'partials/editUserProfile/edituser.html'
+                templateUrl: 'partials/edituser/edituser.html'
             })
     }])
     .controller('editUserCtrl', function ($http, $scope, Auth, $log, $location) {
