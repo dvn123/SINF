@@ -1,6 +1,6 @@
 'use strict';
 
-var link = 'http://127.0.0.1:49822/api';
+var link = 'http://127.0.0.1:49822/api/';
 
 angular.module('myApp')
     .factory("Auth", function ($http, $log, $cookieStore) {
@@ -18,7 +18,7 @@ angular.module('myApp')
                 $log.log("Antes register: ");
                 $log.log(user);
 
-                $http.post(link + '/Customers/', newuser).success(function (res) {
+                $http.post(link + 'Customers/', newuser).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {
@@ -41,7 +41,7 @@ angular.module('myApp')
                 $log.log("Antes edit: ");
                 $log.log(user);
 
-                $http.put(link + '/Customers/' + user.id, newuser).success(function (res) {
+                $http.put(link + 'Customers/' + user.id, newuser).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {
@@ -60,7 +60,7 @@ angular.module('myApp')
                  $http.post(link + '/Customers/login', user)
                  $http.get('login.json', user)
                  */
-                $http.post(link + '/Customers/login', newuser).success(function (res) {
+                $http.post(link + 'Customers/login', newuser).success(function (res) {
                     if (res.error)
                         error(res.error);
                     else {

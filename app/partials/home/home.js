@@ -1,5 +1,5 @@
 'use strict';
-var link = 'http://127.0.0.1:49822/api/';
+//var link = 'http://127.0.0.1:49822/api/';
 
 angular.module('myApp.home', ['ngRoute'])
 

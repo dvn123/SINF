@@ -1,6 +1,6 @@
 'use strict';
 
-var link = 'http://127.0.0.1:49822/api';
+var link = 'http://127.0.0.1:49822/api/';
 
 angular.module('myApp.history', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
@@ -20,7 +20,7 @@ angular.module('myApp.history', ['ngRoute'])
         //$http.get(link + '/orders/?Customer=' + Auth.getCurrentUser().id)
         //$http.get('partials/history/history.json')
         $scope.refreshOrders = function() {
-            $http.get(link + '/orders/?Customer=' + Auth.getCurrentUser().id).success(function (res) {
+            $http.get(link + 'orders/?Customer=' + Auth.getCurrentUser().id).success(function (res) {
                 $log.log("Novas orders: ");
                 $log.log(res);
 
