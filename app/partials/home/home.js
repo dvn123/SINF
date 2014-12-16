@@ -10,13 +10,20 @@ angular.module('myApp.home', ['ngRoute'])
       });
     }])
 
-    .controller('HomeCtrl', [function() {
+    .controller('HomeCtrl', ['$http', function($http) {
       var home = this;
+      home.link = link;
 
       home.hots = [];
       home.monos = [];
 
-      $http.get(link + 'products/').success(function(data) {
-        home.hots = data;
+      $http.get(link + 'products/hot/6').success(function(data) {
+        console.log(JSON.stringify(data));
+        home.hots = data.products;
+      });
+
+      $http.get(link + 'products/fast/6').success(function(data) {
+        console.log(JSON.stringify(data));
+        home.monos = data.products;
       });
     }]);
