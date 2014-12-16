@@ -1,6 +1,8 @@
 'use strict';
 
-
+function capitaliseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 angular.module('myApp.viewProduct', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
@@ -19,25 +21,43 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             $scope.current = {};
             $scope.current.mainId = $scope.product.id;
 
+            $scope.keys = Object.keys($scope.product.subproducts[0]);
+            for(var i = 0; i < $scope.keys.length; i++) {
+                if($scope.keys[i] != "stock" && $scope.keys[i] != "id")
+                    $scope.keys[i] = capitaliseFirstLetter($scope.keys[i]);
+            }
+            $scope.master_select = $scope.keys[0];
+
+            for(var i = 0; i < $scope.product.subproducts.length; i++) {
+                for(var key in $scope.product.subproducts[i]){
+                    if(key != "stock" && key != "id") {
+                        $scope.product.subproducts[i][capitaliseFirstLetter(key)] = $scope.product.subproducts[i][key];
+                        delete $scope.product.subproducts[i][key];
+                    }
+                }
+            }
+
+            console.log($scope.product);
+
             $scope.select_options = {};
             $scope.selected_image = $scope.product.image_links[0];
 
             $scope.image_n = $scope.product.image_links.length % 4;
 
-            $scope.keys = Object.keys(data.product.subproducts[0]);
             for(var i = 0; i < $scope.keys.length; i++) {
                 //Set defaults
-                $scope.current[$scope.keys[i]] = data.product.subproducts[0][$scope.keys[i]];
+                $scope.current[$scope.keys[i]] = $scope.product.subproducts[0][$scope.keys[i]];
 
                 if($scope.keys[i] != "stock" && $scope.keys[i] != "id") {
                     $scope.select_options[$scope.keys[i]] = [];
                 }
             }
 
-            $scope.master_select = $scope.keys[0];
+            console.log("Keys: ");
+            console.log($scope.keys);
 
-            for(var i = 0; i < data.product.subproducts.length; i++) {
-                for(var key in data.product.subproducts[i]){
+            for(var i = 0; i < $scope.product.subproducts.length; i++) {
+                for(var key in $scope.product.subproducts[i]){
                     if(key != "stock" && key != "id" && $scope.select_options[key].indexOf(data.product.subproducts[i][key]) == -1) {
                         $scope.select_options[key].push(data.product.subproducts[i][key]);
                     }
@@ -71,7 +91,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
 
-            //console.log(JSON.stringify($scope.filter));
+            console.log($scope.filter);
 
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 if ($scope.current[obj] == $scope.product.subproducts[i][obj]) {
