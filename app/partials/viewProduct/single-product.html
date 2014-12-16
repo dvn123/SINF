@@ -1,6 +1,6 @@
 <section class="marketplace-top">
     <div id="market-wrapper">
-        <div class="item_image col-lg-8 col-lg-offset-2">
+        <div class="item_image col-lg-10 col-lg-offset-2">
             <img data-effect="fade" class="aligncenter" ng-src="http://127.0.0.1:49822/api/images/{{selected_image}}" alt="">
         </div><!-- end item_image -->
     </div>
@@ -52,7 +52,8 @@
                         </div><!-- item_price -->
                         <hr>
                         <div class="buttons">
-                            <a class="button btn-block large" href="#">{{current["stock"]}} in Stock</a>
+                            <a class="button btn-block large" data-toggle="popover" data-html="true" data-placement="top" data-container="body" title="Stock in shops"
+                               data-content="{{stockString}}">{{current["stock"]}} in Stock</a>
                             <!--<a class="button btn-block large" ng-if="current['stock'] > 0" href="#"><i class="fa fa-download"></i> BUY NOW</a>-->
                             <ngcart-addtocart ng-if="current['stock']" id="{{ current.id }}" name="{{ product.name }}" price="{{ product.price }}" data="current"><i class="fa fa-shopping-cart"></i> Add to cart</ngcart-addtocart>
                         </div><!-- buttons -->
@@ -91,6 +92,7 @@
 <script type="application/javascript">
     $('#jetmenu li').removeClass('active');
     $('#jetmenu .products').addClass('active');
+    $('[data-toggle="popover"]').popover();
 </script>
 
 
