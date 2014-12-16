@@ -51,7 +51,8 @@
 
             <h4 class="mb"><i class="fa fa-angle-right"></i>User history</h4>
             <br/>
-            <table datatable="" class="table table-striped">
+            <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="row-border hover"
+                   class="table table-striped">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -62,16 +63,104 @@
                 </thead>
 
                 <tbody>
-                <tr ng-repeat="order in orders">
+                <tr ng-repeat="order in orders" ng-click="open(lg, $index)">
                     <td>{{order.id}}</td>
                     <td>{{order.date}}</td>
-                    <td>{{order.state}}</td>
+                    <td>{{order.state | translateState}}</td>
                     <td>{{order.total | currency: "€"}}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
-
-        <button ng-click="a()"></button>
     </div>
 </section>
+
+<!-- Login Modal -->
+<script type="text/ng-template" id="historyModal.html">
+    <div class="container">
+        <table class="table table-striped" data-effect="fade">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>ID</td>
+                <td>{{order.id}}</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>{{order.date}}</td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td>{{order.state | translateState}}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>{{order.total | currency: "€"}}</td>
+            </tr>
+            <tr>
+                <td>Delivery Address</td>
+                <td>{{order.delivery_adress}}</td>
+            </tr>
+            <tr>
+                <td>Delivery City</td>
+                <td>{{order.delivery_city}}</td>
+            </tr>
+            <tr>
+                <td>Delivery Zip Code 1</td>
+                <td>{{order.delivery_zip1}}</td>
+            </tr>
+            <tr>
+                <td>Delivery Zip Code 2</td>
+                <td>{{order.delivery_zip2}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-striped" data-effect="fade" ng-repeat="line in order.lines">
+            <thead>
+            <tr>
+                <th>Product: </th>
+                <th>{{$index + 1}}</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td>Product ID</td>
+                <td>{{line.product_id}}</td>
+            </tr>
+
+            <tr>
+                <td>Unit Price</td>
+                <td>{{line.unit_price | currency: "€"}}</td>
+            </tr>
+
+            <tr>
+                <td>Quantity</td>
+                <td>{{line.quantity}}</td>
+            </tr>
+
+            <tr>
+                <td>Total</td>
+                <td>{{line.total | currency: "€"}}</td>
+            </tr>
+
+            <tr>
+                <td>Color</td>
+                <td>{{line.color}}</td>
+            </tr>
+
+            <tr>
+                <td>Size</td>
+                <td>{{line.size}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</script>
