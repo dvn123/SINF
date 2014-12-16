@@ -10,36 +10,34 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
         });
     }])
 
-    .controller('viewCheckout', ['$http', '$scope', '$routeParams', 'ngCart' ,function($http, $scope, $routeParams, ngCart) {
+    .controller('viewCheckout', ['$http', '$scope', '$routeParams', 'ngCart', 'Auth', function($http, $scope, $routeParams, ngCart, Auth) {
         var view = this;
         var order = {};
         order.customer = "C001";
         order.lines = [];
+        view.hasUser = Auth.hasUser();
+        view.isEmpty = ngCart.getItems().length === 0;
+
+        view.checkingOut = false;
+        view.ngCart = ngCart;
 
         //order.lines.push({"product_id": "A001","quantity":2});
         view.submitOrder = function() {
             var products = ngCart.getItems();
-            console.log("--->" + JSON.stringify(products));
-            console.log("-----------------------------------");
 
             for(var i = 0; i < products.length; i++) {
                 order.lines.push({"product_id": products[i]._id,"quantity": products[i]._quantity});
             }
 
-            console.log(order);
+            view.checkingOut = true;
 
-            console.log("***************");
-
-            console.log(JSON.stringify(order));
-
-            /// $http.jsonp(link + 'orders?callback=' + order).success(function(data) {
             $http.post(link + 'orders', order).success(function(data) {
+                console.log("Order completed ID: " + data);
+                view.checkingOut = false;
 
-
-                console.log("-->" + data + "<--");
             });
 
-            //ngCart.empty(true);
+            ngCart.empty(true);
         };
 
 
