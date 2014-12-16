@@ -40,7 +40,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="theme_details">
                         <div class="item-description">
-                            <p>{{product.description}}</p>
+                            <p>{{product.description}}<a href="http://127.0.0.1:49822/api/images/{{product.specs_link}}" ng-if="product.specs_link != null"> Know more.</a></p>
                         </div><!-- item-description -->
                     </div><!-- theme_details -->
                 </div><!-- col-lg-6 -->
@@ -52,7 +52,7 @@
                         </div><!-- item_price -->
                         <hr>
                         <div class="buttons">
-                            <a class="button btn-block large" data-toggle="popover" data-html="true" data-placement="top" data-container="body" title="Stock in shops"
+                            <a class="button btn-block large" data-toggle="popover" data-html="true" data-placement="top" title="Stock in shops"
                                data-content="{{stockString}}">{{current["stock"]}} in Stock</a>
                             <!--<a class="button btn-block large" ng-if="current['stock'] > 0" href="#"><i class="fa fa-download"></i> BUY NOW</a>-->
                             <ngcart-addtocart ng-if="current['stock']" id="{{ current.id }}" name="{{ product.name }}" price="{{ product.price }}" data="current"><i class="fa fa-shopping-cart"></i> Add to cart</ngcart-addtocart>
