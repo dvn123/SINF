@@ -24,6 +24,8 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
 
         view.newAddress = false;
 
+        view.address = {};
+
         view.setNewAddress = function (x) {
           view.newAddress = x;
         };
@@ -41,6 +43,9 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
                 order.lines.push({"product_id": products[i]._id,"quantity": products[i]._quantity});
             }
 
+            if (view.isNewAddress)
+                for (var attrname in view.address) { order[attrname] = view.address[attrname]; }
+
             view.checkingOut = true;
 
             $http.post(link + 'orders', order).success(function(data) {
@@ -48,7 +53,8 @@ angular.module('myApp.viewCheckout', ['ngRoute'])
                 view.checkingOut = false;
 
             });
-
+            console.log(JSON.stringify(view.address));
+            console.log(JSON.stringify(order));
             ngCart.empty(true);
         };
 
