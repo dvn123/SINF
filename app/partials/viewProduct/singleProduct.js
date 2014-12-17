@@ -21,6 +21,10 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             $scope.current = {};
             $scope.current.mainId = $scope.product.id;
 
+            $http.get('http://127.0.0.1:49822/api/products/bycategory/' + $scope.product.category).success(function(data) {
+                $scope.related = data.products.slice(0,4);
+            });
+
             $scope.keys = Object.keys($scope.product.subproducts[0]);
             for(var i = 0; i < $scope.keys.length; i++) {
                 if($scope.keys[i] != "stock" && $scope.keys[i] != "id" && $scope.keys[i] != "stock_shops")
@@ -71,6 +75,8 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             $scope.filter = {};
             $scope.filter_update($scope.master_select);
         });
+
+
 
         $scope.buildStockString = function(stock_shops) {
             var string = "";
@@ -163,7 +169,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
         $scope.updateImage = function(obj) {
             if(obj < $scope.product.image_links.length) {
                 $scope.selected_image = $scope.product.image_links[obj];
-                $('body').scrollTo('.item_image');
+                //$('body').scrollTo('.item_image');
             }
         };
     }]);
