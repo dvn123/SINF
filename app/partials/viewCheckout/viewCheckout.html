@@ -26,22 +26,23 @@
                 <br>
                 <div  ng-hide="checkout.ngCart.totalItems() === 0">
 
-                    <form  ng-show="checkout.hasUser" id="cartinfo" action="" name="checkoutForm" method="post">
+                    <form  name="checkoutForm" ng-show="checkout.hasUser" id="cartinfo"
+                           ng-submit="checkoutForm.$valid && checkout.submitOrder(ngCart)">
 
 
                         <h5 class="title">CART DETAILS</h5>
                         <p><img alt="" src="assets/Theme/images/payments1.png"></p>
                         <label for="cardnumber">Card Number <span class="required">*</span></label>
-                        <input type="text" name="cardnumber" id="cardnumber" class="form-control" placeholder="Your card number">
+                        <input type="number" name="cardnumber" id="cardnumber" class="form-control" placeholder="Your card number" required>
                         <label for="cvc">CVC <span class="required">*</span></label>
-                        <input type="text" name="cvc" id="cvc" class="form-control" placeholder="Security code">
+                        <input type="number" min="000" max="999" name="cvc" id="cvc" class="form-control" placeholder="Security code" required>
                         <label for="ncard">Name on the Card <span class="required">*</span></label>
-                        <input type="text" name="ncard" id="ncard" class="form-control" placeholder="Name on the card">
+                        <input type="text" name="ncard" id="ncard" class="form-control" placeholder="Name on the card" required>
                         <label for="ncard">Expiration (MM/YY) <span class="required">*</span></label>
 
                         <div class="clearfix"></div>
 
-                        <select class="form-control" style="width:75px; float:left; margin-right:10px;">
+                        <select class="form-control" style="width:75px; float:left; margin-right:10px;" required>
                             <option>01</option>
                             <option>02</option>
                             <option>03</option>
@@ -55,7 +56,7 @@
                             <option>11</option>
                             <option>12</option>
                         </select>
-                        <select class="form-control" style="width:75px;float:left">
+                        <select class="form-control" style="width:75px;float:left" required>
                             <option>14</option>
                             <option>15</option>
                             <option>16</option>
@@ -71,15 +72,14 @@
                         <div class="address" ng-show="checkout.isNewAddress()">
                             <h5 class="title">DELIVERY INFORMATION</h5>
 
-
                             <label for="baddress">Delivery Address</label>
-                            <input type="text" name="baddress" id="baddress" class="form-control" placeholder="Address line 1">
+                            <input type="text" name="baddress" id="baddress" class="form-control" placeholder="Address line 1" ng-model="checkout.address.delivery_address" ng-required="checkout.isNewAddress()">
                             <label for="bcity">Delivery City</label>
-                            <input type="text" name="bcity" id="bcity" class="form-control" placeholder="Your city">
+                            <input type="text" name="bcity" id="bcity" class="form-control" placeholder="Your city" ng-model="checkout.address.delivery_city" ng-required="checkout.isNewAddress()">
                             <label for="bzip">Zip 1 </label>
-                            <input type="text" name="bzip" id="bzip" class="form-control" placeholder="Your ZIP1 or postal code">
+                            <input type="text" name="bzip" id="bzip" class="form-control" placeholder="Your ZIP1 or postal code" ng-model="checkout.address.delivery_zip1" ng-required="checkout.isNewAddress()">
                             <label for="bzip">Zip 2 </label>
-                            <input type="text" name="bzip" id="bzip1" class="form-control" placeholder="Your ZIP2 or postal code">
+                            <input type="text" name="bzip" id="bzip1" class="form-control" placeholder="Your ZIP2 or postal code" ng-model="checkout.address.delivery_zip2" ng-required="checkout.isNewAddress()">
 
                             <br>
 
@@ -90,15 +90,15 @@
                         <div class="clearfix"></div>
 
                         <label class="checkbox-inline">
-                            <input id="inlineCheckbox3" type="checkbox" value="option1" required>
+                            <input id="inlineCheckbox3" type="checkbox" value="option1" required="You must agree with the terms!">
                             <strong>AGREE TO TERMS</strong>
                         </label>
 
                         <br><br>
                         <!--<div class="well"><strong>PURCHASE TOTAL:</strong> $18.00</div>-->
                         <br>
-                        <button  ng-click="checkout.submitOrder(ngCart)">PURCHASE</button>
-                        <!--<input class="button large btn-block" type="submit" value="PURCHASE" />-->
+                        <!--<button  ng-click="checkout.submitOrder(ngCart)">PURCHASE</button>-->
+                        <input class="button large btn-block" type="submit" value="PURCHASE" />
                     </form>
                 </div>
 
