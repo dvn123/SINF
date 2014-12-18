@@ -16,6 +16,6 @@
     </div>
     <div class="col-md-8">{{ ngCart.totalItems() }}
         <ng-pluralize count="ngCart.totalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
-        <br />{{ ngCart.totalCost() | currency }}
+        <br />{{ ngCart.totalCost() | currency: "€" }}
     </div>
 </div>
