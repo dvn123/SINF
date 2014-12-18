@@ -34,7 +34,7 @@ angular.module('myApp.history', ['ngRoute'])
             $scope.refreshOrders();
         });
 
-
+//ng-click="changePage(line.product_id)" style="color: #b19d6f;"
         $scope.open = function (size, index) {
             $modal.open({
                 templateUrl: 'historyModal.html',
@@ -48,7 +48,7 @@ angular.module('myApp.history', ['ngRoute'])
             });
         };
     })
-    .controller('historyModalCtrl', function ($scope, $http, $log, item) {
+    .controller('historyModalCtrl', function ($scope, $http, $log, item, $modalInstance, $location) {
         $scope.order = {};
 
         $http.get(link + 'orders/' + item.id).success(function (res) {
@@ -56,6 +56,10 @@ angular.module('myApp.history', ['ngRoute'])
         }).error(function (error) {
             $log.error(error);
         });
+
+        $scope.close = function(productId) {
+            $modalInstance.close();
+        };
     })
     .filter('translateState', function () {
         return function (state) {

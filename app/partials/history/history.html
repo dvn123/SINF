@@ -34,13 +34,9 @@
                         <td>{{user.city}}</td>
                     </tr>
                     <tr>
-                        <td>Zip Code 1</td>
-                        <td>{{user.zip_code1}}</td>
-                    </tr>
-                    <tr>
-                        <td>Zip Code 2</td>
-                        <td>{{user.zip_code2}}</td>
-                    </tr>
+                        <td>Zip Code</td>
+                        <td>{{user.zip_code1}}-{{user.zip_code2}}</td>
+                    </tr
                     </tbody>
                 </table>
 
@@ -65,7 +61,7 @@
                 <tbody>
                 <tr ng-repeat="order in orders" ng-click="open(lg, $index)">
                     <td>{{order.id}}</td>
-                    <td>{{order.date}}</td>
+                    <td>{{order.date | date}}</td>
                     <td>{{order.state | translateState}}</td>
                     <td>{{order.total | currency: "€"}}</td>
                 </tr>
@@ -92,7 +88,7 @@
             </tr>
             <tr>
                 <td>Date</td>
-                <td>{{order.date}}</td>
+                <td>{{order.date | date}}</td>
             </tr>
             <tr>
                 <td>State</td>
@@ -111,12 +107,8 @@
                 <td>{{order.delivery_city}}</td>
             </tr>
             <tr>
-                <td>Delivery Zip Code 1</td>
-                <td>{{order.delivery_zip1}}</td>
-            </tr>
-            <tr>
-                <td>Delivery Zip Code 2</td>
-                <td>{{order.delivery_zip2}}</td>
+                <td>Delivery Zip Code</td>
+                <td>{{order.delivery_zip1}}-{{order.delivery_zip2}}</td>
             </tr>
             </tbody>
         </table>
@@ -132,7 +124,7 @@
 
             <tr>
                 <td>Product ID</td>
-                <td>{{line.product_id}}</td>
+                <td><a ng-href="#/products/{{line.product_id}}" ng-click="close()">{{line.product_id}}</a></td>
             </tr>
 
             <tr>
