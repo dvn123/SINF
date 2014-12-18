@@ -184,7 +184,6 @@ function getColors(items) {
         for(var j = 0; j < subproducts.length; j++) {
             if(colors.indexOf(subproducts[j].color) == -1) {
                 colors.push(subproducts[j].color);
-                break;
             }
         }
     }
@@ -192,6 +191,7 @@ function getColors(items) {
 }
 
 function getSizes(items) {
+    console.log(items);
     var sizes = [];
 
     for(var i = 0; i < items.length; i++) {
@@ -199,7 +199,6 @@ function getSizes(items) {
         for(var j = 0; j < subproducts.length; j++) {
             if(sizes.indexOf(subproducts[j].size) == -1) {
                 sizes.push(subproducts[j].size);
-                break;
             }
         }
     }
