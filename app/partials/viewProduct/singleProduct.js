@@ -23,10 +23,15 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
             $http.get('http://127.0.0.1:49822/api/products/bycategory/' + $scope.product.category).success(function(data) {
                 for(var i = 0; i < data.products.length; i++) {
-                    if(angular.equals($scope.product, data.products[i]))
+                    console.log("Testing: ");
+                    console.log($scope.product);
+                    console.log(data.products[i]);
+                    if($scope.product.id == data.products[i].id) {
+                        console.log("FOUND");
                         data.products.splice(i, 1);
+                    }
                 }
-                $scope.related = data.products.slice(0,4);
+                $scope.related = data.products.slice(0,1);
             });
 
             $scope.keys = Object.keys($scope.product.subproducts[0]);
@@ -45,7 +50,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
 
-            console.log($scope.product);
+            //console.log($scope.product);
 
             $scope.select_options = {};
             $scope.selected_image = $scope.product.image_links[0];
@@ -61,8 +66,8 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
 
-            console.log("Keys: ");
-            console.log($scope.keys);
+            //console.log("Keys: ");
+            //console.log($scope.keys);
 
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 for(var key in $scope.product.subproducts[i]){
@@ -74,8 +79,8 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
 
             $scope.select_options_full = $scope.select_options;
-            console.log("Select Options:");
-            console.log($scope.select_options_full);
+            //console.log("Select Options:");
+            //console.log($scope.select_options_full);
             $scope.filter = {};
             $scope.filter_update($scope.master_select);
         });
@@ -109,7 +114,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
             }
 
-            console.log($scope.filter);
+            //console.log($scope.filter);
 
             for(var i = 0; i < $scope.product.subproducts.length; i++) {
                 if ($scope.current[obj] == $scope.product.subproducts[i][obj]) {

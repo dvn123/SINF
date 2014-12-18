@@ -83,6 +83,9 @@
                 <div class="col-md-12 he-wrap tpl6 market-item" ng-if="product.image_links.length == 1" ng-repeat="image in product.image_links">
                     <img class="lazyOwl" ng-click='updateImage($index)' ng-src="http://127.0.0.1:49822/api/images/{{image}}" alt="">
                 </div><!-- he wrap -->
+                <div class="col-md-3 he-wrap tpl6 market-item" ng-if="product.image_links.length == 4" ng-repeat="image in product.image_links">
+                    <img class="lazyOwl" ng-click='updateImage($index)' ng-src="http://127.0.0.1:49822/api/images/{{image}}" alt="">
+                </div><!-- he wrap -->
                 </div>
         </div><!-- end content -->
         <div class="portfolio-centered" style="margin-left: 80px; margin-top: 0; padding-top: 0;">
@@ -120,7 +123,7 @@
                     </div><!-- he wrap -->
                 </div>
 
-                <div ng-if="related.length == 2" class="portfolio-item col-md-3 col-md-offset-3" style="margin-top: 20px" ng-repeat="related_p in related">
+                <div ng-if="related.length == 2" class="portfolio-item col-md-3 col-md-offset-2" style="margin-top: 20px" ng-repeat="related_p in related">
                     <div class="he-wrap tpl6">
                         <img ng-src="http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" alt="">
                         <div class="he-view">
@@ -133,7 +136,7 @@
                     </div><!-- he wrap -->
                 </div>
 
-                <div ng-if="related.length == 1" class="portfolio-item col-md-8 col-md-offset-4" style="margin-top: 20px" ng-repeat="related_p in related">
+                <div ng-if="related.length == 1" class="portfolio-item col-md-4 col-md-offset-4" style="margin-top: 20px" ng-repeat="related_p in related">
                     <div class="he-wrap tpl6">
                         <img ng-src="http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" alt="">
                         <div class="he-view">
