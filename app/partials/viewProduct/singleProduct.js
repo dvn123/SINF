@@ -22,16 +22,17 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             $scope.current.mainId = $scope.product.id;
 
             $http.get('http://127.0.0.1:49822/api/products/bycategory/' + $scope.product.category).success(function(data) {
+                console.log(data.products.length);
                 for(var i = 0; i < data.products.length; i++) {
                     console.log("Testing: ");
-                    console.log($scope.product);
-                    console.log(data.products[i]);
+                    //console.log($scope.product);
+                    //console.log(data.products[i]);
                     if($scope.product.id == data.products[i].id) {
                         console.log("FOUND");
                         data.products.splice(i, 1);
                     }
                 }
-                $scope.related = data.products.slice(0,1);
+                $scope.related = data.products.slice(0,4);
             });
 
             $scope.keys = Object.keys($scope.product.subproducts[0]);
