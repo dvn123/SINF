@@ -22,6 +22,10 @@ angular.module('myApp.viewProduct', ['ngRoute'])
             $scope.current.mainId = $scope.product.id;
 
             $http.get('http://127.0.0.1:49822/api/products/bycategory/' + $scope.product.category).success(function(data) {
+                for(var i = 0; i < data.products.length; i++) {
+                    if(angular.equals($scope.product, data.products[i]))
+                        data.products.splice(i, 1);
+                }
                 $scope.related = data.products.slice(0,4);
             });
 
