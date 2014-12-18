@@ -12,7 +12,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
         });
     }])
 
-    .controller('viewProductCtrl', ['$http', '$scope', '$routeParams' ,function($http, $scope, $routeParams) {
+    .controller('viewProductCtrl', ['$http', '$scope', '$routeParams', 'ngCart' ,function($http, $scope, $routeParams, ngCart) {
 
         //$http.get('partials/viewProduct/1.json').success(function(data) {
         $http.get('http://127.0.0.1:49822/api/products/' + $routeParams['productID']).success(function(data) {
@@ -34,6 +34,10 @@ angular.module('myApp.viewProduct', ['ngRoute'])
                 }
                 $scope.related = data.products.slice(0,4);
             });
+
+            /****set iva and shipping ***/
+            ngCart.setTax(23);
+            ngCart.setShipping(0);
 
             $scope.keys = Object.keys($scope.product.subproducts[0]);
             for(var i = 0; i < $scope.keys.length; i++) {

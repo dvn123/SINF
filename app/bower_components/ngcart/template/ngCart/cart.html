@@ -22,14 +22,14 @@
             <th></th>
             <th></th>
             <th>Tax ({{ ngCart.getCart().tax }}%):</th>
-            <th>{{ ngCart.getTax() | currency }}</th>
+            <th>{{ ngCart.getTax() | currency: "€" }}</th>
         </tr>
         <tr ng-show="ngCart.getShipping()">
             <th></th>
             <th></th>
             <th></th>
             <th>Shipping:</th>
-            <th>{{ ngCart.getShipping() | currency }}</th>
+            <th>{{ ngCart.getShipping() | currency: "€" }}</th>
         </tr>
         <tr>
             <th></th>
