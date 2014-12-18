@@ -79,7 +79,7 @@ angular.module('myApp.viewProduct', ['ngRoute'])
 
 
         $scope.buildStockString = function(stock_shops) {
-            var string = "";
+            var string = "Online: " + $scope.current["stock"] + "<br>";
             for(var i = 0; i < stock_shops.length; i++) {
                 string += stock_shops[i] + "<br>";
             }

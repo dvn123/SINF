@@ -94,7 +94,7 @@
             <div class="divider"></div>
             <div class="recentitems portfolio container col-lg-12 col-md-12 col-sm-12 clearfix">
 
-                <div class="portfolio-item col-md-3" style="margin-top: 20px" ng-repeat="related_p in related">
+                <div ng-if="related.length == 4" class="portfolio-item col-md-3" style="margin-top: 20px" ng-repeat="related_p in related">
                     <div class="he-wrap tpl6">
                         <img ng-src="http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" alt="">
                         <div class="he-view">
@@ -106,6 +106,46 @@
                         </div><!-- he view -->
                     </div><!-- he wrap -->
                 </div>
+
+                <div ng-if="related.length == 3" class="portfolio-item col-md-3 col-md-offset-1" style="margin-top: 20px" ng-repeat="related_p in related">
+                    <div class="he-wrap tpl6">
+                        <img ng-src="http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" alt="">
+                        <div class="he-view">
+                            <div class="bg a0" data-animate="fadeIn">
+                                <h3 class="a1" data-animate="fadeInDown">{{related_p.name}}</h3>
+                                <a data-rel="prettyPhoto" href=http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
+                                <a ng-href="#products/{{related_p.id}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                            </div><!-- he bg -->
+                        </div><!-- he view -->
+                    </div><!-- he wrap -->
+                </div>
+
+                <div ng-if="related.length == 2" class="portfolio-item col-md-3 col-md-offset-3" style="margin-top: 20px" ng-repeat="related_p in related">
+                    <div class="he-wrap tpl6">
+                        <img ng-src="http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" alt="">
+                        <div class="he-view">
+                            <div class="bg a0" data-animate="fadeIn">
+                                <h3 class="a1" data-animate="fadeInDown">{{related_p.name}}</h3>
+                                <a data-rel="prettyPhoto" href=http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
+                                <a ng-href="#products/{{related_p.id}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                            </div><!-- he bg -->
+                        </div><!-- he view -->
+                    </div><!-- he wrap -->
+                </div>
+
+                <div ng-if="related.length == 1" class="portfolio-item col-md-8 col-md-offset-4" style="margin-top: 20px" ng-repeat="related_p in related">
+                    <div class="he-wrap tpl6">
+                        <img ng-src="http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" alt="">
+                        <div class="he-view">
+                            <div class="bg a0" data-animate="fadeIn">
+                                <h3 class="a1" data-animate="fadeInDown">{{related_p.name}}</h3>
+                                <a data-rel="prettyPhoto" href=http://127.0.0.1:49822/api/images/{{related_p.image_links[0]}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
+                                <a ng-href="#products/{{related_p.id}}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                            </div><!-- he bg -->
+                        </div><!-- he view -->
+                    </div><!-- he wrap -->
+                </div>
+
 
             </div><!-- portfolio -->
 
