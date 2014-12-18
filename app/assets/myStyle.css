@@ -32,9 +32,10 @@
 }
 
 .ng-invalid.ng-dirty {
-    border-color: #FA787E;
+    border-color: #8C2D19;
 }
+/*
 
 .ng-valid.ng-dirty {
     border-color: #78FA89;
-}
+}*/
